@@ -1,0 +1,7 @@
+<div id="thinking-talents-main__skills-popup">
+  <img class="x-icon" src="assets/images/close-icon.png" alt="X Icon to close the skills group popup" (click)="closePopup()">
+  <h2>Choose Thinking Talents</h2>
+  <p class="thinking-talents-main__skill-select" *ngFor="let skill of skillsData">
+    {{skill.name}}
+  </p>
+</div>

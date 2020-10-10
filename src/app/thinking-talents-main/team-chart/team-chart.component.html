@@ -1,0 +1,22 @@
+<div id="team-chart">
+  <button id="add-profile-button" (click)="addPerson()">Add profile</button>
+  <table id="team-chart__table">
+    <colgroup>
+      <col style="width:25%">
+      <col style="width:40%">
+      <col style="width:35%">
+    </colgroup>
+    <tr id="team-chart__header-row">
+      <th>Name</th><th>Thinking Talents</th><th>Actions</th>
+    </tr>
+    <tr id="team-chart__teammates" *ngFor="let person of teammates">
+      <td>{{person.name}}</td>
+      <td>{{person.talents}}</td>
+      <td>
+        <button class="team-chart__actions-buttons" (click)="viewPerson()">View</button>
+        <button class="team-chart__actions-buttons" (click)="editPerson()">Edit</button>
+        <button class="team-chart__actions-buttons" (click)="removePerson()">Remove</button>
+      </td>
+    </tr>
+  </table>
+</div>

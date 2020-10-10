@@ -1,0 +1,5 @@
+<div id="thinking-talents-main">
+  <h1>Team Maps</h1>
+  <app-team-chart (skillsPopupEmitter)="openSkillsPopup($event)"></app-team-chart>
+  <app-skills-popup (skillsPopupEmitter)="openSkillsPopup($event)" *ngIf="_toggleSkillsPopup"></app-skills-popup>
+</div>

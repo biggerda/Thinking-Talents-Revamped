@@ -1,0 +1,38 @@
+#thinking-talents-main__skills-popup {
+  background-color: white;
+  border: solid black 1px;
+  padding: 1.5rem;
+  width: 45rem;
+
+  /*Modal Popup*/
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  .x-icon {
+    width: 1rem;
+    float: right;
+    cursor: pointer;
+  }
+
+  .thinking-talents-main__skill-select {
+    display: inline-block;
+    cursor: pointer;
+    padding: .5rem;
+    margin: .5rem;
+    width: 9rem;
+    text-align: center;
+    border: solid grey 1px;
+    border-radius: 25px;
+    background-color: lightgrey;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .thinking-talents-main__skill-select:hover {
+    color: white;
+    background-color: #338cf2;
+  }
+}
