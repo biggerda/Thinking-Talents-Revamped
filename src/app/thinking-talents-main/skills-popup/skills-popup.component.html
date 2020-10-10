@@ -1,7 +1,14 @@
 <div id="thinking-talents-main__skills-popup">
   <img class="x-icon" src="assets/images/close-icon.png" alt="X Icon to close the skills group popup" (click)="closePopup()">
-  <h2>Choose Thinking Talents</h2>
-  <p class="thinking-talents-main__skill-select" *ngFor="let skill of skillsData">
+  <h2>New Profile</h2>
+  <div id="thinking-talents-main__input-name">
+    <label for="new-teammate">Name: </label>
+    <input type="text" required id="new-teammate" name="new-teammate" placeholder="New Teammate Name">
+  </div>
+  <p class="thinking-talents-main__skill-select" (click)="selectTalent(skill.name)" *ngFor="let skill of skillsData">
     {{skill.name}}
   </p>
+  <div id="thinking-talents-main__submit-entry">
+    <button>Submit</button>
+  </div>
 </div>

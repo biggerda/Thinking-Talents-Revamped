@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {skillsData} from '../../entities/skillsData';
 import {Skill} from '../../entities/Skill';
 
@@ -9,7 +9,7 @@ import {Skill} from '../../entities/Skill';
 })
 export class ThinkingTalentsMainComponent implements OnInit {
   skillsData: Skill[] = skillsData;
-  private _toggleSkillsPopup = true;
+  toggleSkills = false;
 
   constructor() {
   }
@@ -17,8 +17,8 @@ export class ThinkingTalentsMainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openSkillsPopup(activated: boolean) {
-    this._toggleSkillsPopup = activated;
+  toggleSkillsPopup(activated: boolean) {
+    this.toggleSkills = activated;
   }
 
 }
