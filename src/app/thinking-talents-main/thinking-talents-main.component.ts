@@ -42,6 +42,10 @@ export class ThinkingTalentsMainComponent implements OnInit {
     this.toggleSkills = activated;
   }
 
+  updateTeam(team: Player[]) {
+    this.teammates = team;
+  }
+
   addTeammate(teammate: Player) {
     this.teammates.push(teammate);
   }

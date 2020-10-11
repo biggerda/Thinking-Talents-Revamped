@@ -1,7 +1,7 @@
 #team-chart {
   #add-profile-button {
     background-color: #3389f2;
-    width: 6rem;
+    width: 6.5rem;
     color: white;
     padding: .8rem 1rem;
     text-align: center;
@@ -15,7 +15,6 @@
   #team-chart__table {
     border-collapse: collapse;
     width: 100%;
-    height: 17rem;
 
     .team-chart__actions-buttons {
       padding: .7rem 1rem;
@@ -29,13 +28,21 @@
       border-bottom: solid lightgrey 1px;
     }
 
-    #team-chart__header-row th {
-      text-align: left;
-      padding-left: 1.5rem;
+    #team-chart__header-row {
+      height: 4rem;
+
+      th {
+        text-align: left;
+        padding-left: 1.5rem;
+      }
     }
 
-    #team-chart__teammates td {
-      padding-left: 1rem;
+    .team-chart__teammates {
+      height: 6rem;
+
+      td {
+        padding-left: 1rem;
+      }
     }
 
     .talent-bubbles {

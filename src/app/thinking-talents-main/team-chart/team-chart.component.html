@@ -9,7 +9,7 @@
     <tr id="team-chart__header-row">
       <th>Name</th><th>Thinking Talents</th><th>Actions</th>
     </tr>
-    <tr id="team-chart__teammates" *ngFor="let person of teammates">
+    <tr class="team-chart__teammates" *ngFor="let person of teammates">
       <td>{{person.name}}</td>
       <td>
         <span class="talent-bubbles" *ngFor="let talent of person.talents">{{talent.name}}</span>
@@ -17,7 +17,7 @@
       <td>
         <button class="team-chart__actions-buttons" (click)="viewPerson()">View</button>
         <button class="team-chart__actions-buttons" (click)="editPerson()">Edit</button>
-        <button class="team-chart__actions-buttons" (click)="removePerson()">Remove</button>
+        <button class="team-chart__actions-buttons" (click)="removePerson(person.name)">Remove</button>
       </td>
     </tr>
   </table>

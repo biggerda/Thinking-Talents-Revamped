@@ -10,6 +10,9 @@ export class TeamChartComponent implements OnInit {
   @Output()
   skillsPopupEmitter = new EventEmitter<boolean>();
 
+  @Output()
+  updateTeamEmitter = new EventEmitter<Player[]>();
+
   @Input()
   teammates: Player[];
 
@@ -31,7 +34,8 @@ export class TeamChartComponent implements OnInit {
 
   }
 
-  removePerson() {
-
+  removePerson(playerName: string) {
+    this.teammates = this.teammates = this.teammates.filter(teammate => teammate.name !== playerName);
+    this.updateTeamEmitter.emit(this.teammates);
   }
 }

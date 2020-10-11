@@ -2,6 +2,7 @@
   <h1>Team Maps</h1>
   <app-team-chart
     (skillsPopupEmitter)="toggleSkillsPopup($event)"
+    (updateTeamEmitter)="updateTeam($event)"
     [teammates]="teammates">
   </app-team-chart>
   <app-skills-popup
