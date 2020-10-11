@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {skillsData} from '../../../entities/skillsData';
 import {Skill} from '../../../entities/Skill';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -35,18 +35,13 @@ export class SkillsPopupComponent implements OnInit {
     this._clickedInside = false;
   }
 
-  constructor(
-  ) {
+  constructor() {
     this.newPersonName = new FormGroup({
       name: new FormControl('', Validators.required)
     });
   }
 
   ngOnInit(): void {
-  }
-
-  closePopup() {
-    this.skillsPopupEmitter.emit(false);
   }
 
   toggleSelectTalent(skill: Skill) {
@@ -72,11 +67,16 @@ export class SkillsPopupComponent implements OnInit {
 
     this.newTeammateEmitter.emit(this.newTeammate);
 
+    this.closePopup();
     this.reset();
   }
 
   reset() {
     this.newPersonName.reset();
     this.skillsData.forEach(skill => skill.checked = false);
+  }
+
+  closePopup() {
+    this.skillsPopupEmitter.emit(false);
   }
 }
