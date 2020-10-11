@@ -1,14 +1,23 @@
-<div id="thinking-talents-main__skills-popup">
-  <img class="x-icon" src="assets/images/close-icon.png" alt="X Icon to close the skills group popup" (click)="closePopup()">
+<div id="skills-popup__skills-popup">
+  <img class="x-icon" src="assets/images/close-icon.png" alt="X Icon to close the skills group popup"
+       (click)="closePopup()">
   <h2>New Profile</h2>
-  <div id="thinking-talents-main__input-name">
+  <div id="skills-popup__input-name" [formGroup]="newPersonName">
     <label for="new-teammate">Name: </label>
-    <input type="text" required id="new-teammate" name="new-teammate" placeholder="New Teammate Name">
+    <input type="text" required id="new-teammate" name="new-teammate" placeholder="Michael Jordan"
+           formControlName="name" [ngClass]="{'is-invalid': newPersonName.get('name').invalid && newPersonName.get('name').touched}">
+    <div class="invalid-feedback" *ngIf="newPersonName.get('name').invalid && newPersonName.get('name').touched">
+      <div *ngIf="newPersonName.get('name').errors.required">Must enter a name.</div>
+      <div *ngIf="newPersonName.get('name').errors.minlength">Name must be at least 3 characters long</div>
+    </div>
   </div>
-  <p class="thinking-talents-main__skill-select" (click)="selectTalent(skill.name)" *ngFor="let skill of skillsData">
+  <button class="skills-popup__skill-select"
+          *ngFor="let skill of skillsData"
+          [ngClass]="{'active': skill.checked}"
+          (click)="toggleSelectTalent(skill)">
     {{skill.name}}
-  </p>
-  <div id="thinking-talents-main__submit-entry">
-    <button>Submit</button>
-  </div>
+  </button>
+  <form id="skills-popup__submit-entry" [formGroup]="newPersonName" (ngSubmit)="onSubmit(newPersonName.value.name)">
+    <button id="skills-popup__submit-button" type="submit" [disabled]="!newPersonName.valid">Submit</button>
+  </form>
 </div>

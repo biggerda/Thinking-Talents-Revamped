@@ -2,7 +2,7 @@ import {Skill} from './Skill';
 
 export interface Player {
   name: string;
-  talents?: Skill[];
+  talents: Skill[];
   aTalents?: number;
   pTalents?: number;
   rTalents?: number;

@@ -1,4 +1,4 @@
-#thinking-talents-main__skills-popup {
+#skills-popup__skills-popup {
   background-color: white;
   border: solid black 1px;
   padding: 1.5rem;
@@ -17,12 +17,12 @@
     cursor: pointer;
   }
 
-  #thinking-talents-main__input-name,
-  #thinking-talents-main__submit-entry {
+  #skills-popup__input-name,
+  #skills-popup__submit-entry {
     text-align: center;
   }
 
-  .thinking-talents-main__skill-select {
+  .skills-popup__skill-select {
     display: inline-block;
     cursor: pointer;
     padding: .5rem;
@@ -36,8 +36,13 @@
     white-space: nowrap;
   }
 
-  .thinking-talents-main__skill-select:hover {
+  .active {
     color: white;
-    background-color: #338cf2;
+    background-color: #338cf2 !important;
+  }
+
+  .skills-popup__skill-select:hover {
+    color: white;
+    background-color: #7cb1ee;
   }
 }

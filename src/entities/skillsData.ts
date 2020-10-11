@@ -28,7 +28,8 @@ export const skillsData: Skill[] = [
   {
     name: 'Competing',
     description: 'Compares performance to that of others.',
-    checked: false
+    checked: false,
+    type: 'whole'
   },
   {
     name: 'Connecting',
@@ -75,7 +76,8 @@ export const skillsData: Skill[] = [
   {
     name: 'Goal Setting',
     description: 'Has daily drive to accomplish and meet a goal.',
-    checked: false
+    checked: false,
+    type: 'whole'
   },
   {
     name: 'Having Confidence',
@@ -104,7 +106,8 @@ export const skillsData: Skill[] = [
   {
     name: 'Joking',
     description: 'Can lighten tense moments and puts self and others at ease with laughter.',
-    checked: false
+    checked: false,
+    type: 'whole'
   },
   {
     name: 'Love of Learning',
@@ -187,7 +190,8 @@ export const skillsData: Skill[] = [
   {
     name: 'Thinking Alone',
     description: 'Poses questions to self and tries to figure them out; constant mental hum.',
-    checked: false
+    checked: false,
+    type: 'whole'
   },
   {
     name: 'Thinking Back',

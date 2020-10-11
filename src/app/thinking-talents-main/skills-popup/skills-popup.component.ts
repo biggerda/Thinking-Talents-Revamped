@@ -1,19 +1,26 @@
 import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {skillsData} from '../../../entities/skillsData';
 import {Skill} from '../../../entities/Skill';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Player} from '../../../entities/Player';
 
 @Component({
   selector: 'app-skills-popup',
   templateUrl: './skills-popup.component.html',
   styleUrls: ['./skills-popup.component.scss']
 })
+
 export class SkillsPopupComponent implements OnInit {
   skillsData: Skill[] = skillsData;
-  selectedTalents: string[] = [];
   private _clickedInside = true;
+  newTeammate: Player;
+  newPersonName: FormGroup;
 
   @Output()
   skillsPopupEmitter = new EventEmitter<boolean>();
+
+  @Output()
+  newTeammateEmitter = new EventEmitter<Player>();
 
   @HostListener('click')
   clickInsideElement() {
@@ -22,13 +29,17 @@ export class SkillsPopupComponent implements OnInit {
 
   @HostListener('document:click')
   clickAction() {
-    if ( !this._clickedInside ){
+    if (!this._clickedInside) {
       this.closePopup();
     }
     this._clickedInside = false;
   }
 
-  constructor() {
+  constructor(
+  ) {
+    this.newPersonName = new FormGroup({
+      name: new FormControl('', Validators.required)
+    });
   }
 
   ngOnInit(): void {
@@ -38,16 +49,34 @@ export class SkillsPopupComponent implements OnInit {
     this.skillsPopupEmitter.emit(false);
   }
 
-  selectTalent(talent: string) {
-    if (!this.selectedTalents.includes(talent)) {
-      this.selectedTalents.push(talent);
-    }
-    console.log(this.selectedTalents);
+  toggleSelectTalent(skill: Skill) {
+    const index = this.skillsData.indexOf(skill);
+    this.skillsData[index].checked = !this.skillsData[index].checked;
   }
 
-  createNewTeammate() {
+  listSelectedTalents(): Skill[] {
+    return this.skillsData.filter(skill => skill.checked === true);
+  }
+
+  onSubmit(customerName) {
     // Only call this method if name and at least 4 thinking talents have been entered
     // Creates new teammate with a name and thinking talent list
     // Adds name back to the team chart once completed
+    const selectedTalents = this.listSelectedTalents();
+    // const selectedTalentsNames = selectedTalents.map(skill => skill.name);
+
+    this.newTeammate = {
+      name: customerName,
+      talents: selectedTalents
+    };
+
+    this.newTeammateEmitter.emit(this.newTeammate);
+
+    this.reset();
+  }
+
+  reset() {
+    this.newPersonName.reset();
+    this.skillsData.forEach(skill => skill.checked = false);
   }
 }

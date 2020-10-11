@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Player} from '../../../entities/Player';
 
 @Component({
@@ -7,13 +7,11 @@ import {Player} from '../../../entities/Player';
   styleUrls: ['./team-chart.component.scss']
 })
 export class TeamChartComponent implements OnInit {
-  @Output() skillsPopupEmitter = new EventEmitter<boolean>();
+  @Output()
+  skillsPopupEmitter = new EventEmitter<boolean>();
 
-  teammates: Player[] = [
-    {name: 'Jennie Mai'},
-    {name: 'Larry Hals'},
-    {name: 'Devin Biggers'},
-  ];
+  @Input()
+  teammates: Player[];
 
   constructor() {
   }

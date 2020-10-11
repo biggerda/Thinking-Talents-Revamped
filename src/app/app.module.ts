@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { SkillsPopupComponent } from './thinking-talents-main/skills-popup/skills-popup.component';
 import { TeamChartComponent } from './thinking-talents-main/team-chart/team-chart.component';
 import {ThinkingTalentsMainComponent} from './thinking-talents-main/thinking-talents-main.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ThinkingTalentsMainComponent} from './thinking-talents-main/thinking-tal
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
