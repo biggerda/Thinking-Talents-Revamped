@@ -33,9 +33,14 @@ export class SkillsPopupComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   updateTeammateOnChartEmitter = new EventEmitter<UpdatedPlayerData>();
 
+  get numChecked(): number {
+    const numChecked = this.skillsData.filter(it => it.checked);
+    return numChecked.length > 3 ? 4 : numChecked.length;
+  }
+
   get anyChecked(): boolean {
     const numChecked = this.skillsData.filter(it => it.checked);
-    return numChecked.length > 0;
+    return numChecked.length > 3;
   }
 
   @HostListener('click')
@@ -100,8 +105,7 @@ export class SkillsPopupComponent implements OnInit, OnChanges, OnDestroy {
     // Only call this method if name and at least 4 thinking talents have been entered
     // Creates new teammate with a name and thinking talent list
     // Adds name back to the team chart once completed
-    const selectedTalents = this.listSelectedTalents();
-    // const selectedTalentsNames = selectedTalents.map(skill => skill.name);
+    const selectedTalents = this.listSelectedTalents().sort();
 
     if (this.isAddingTeammate) {
       this.newTeammate = {

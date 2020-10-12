@@ -1,7 +1,14 @@
 <div id="skills-popup__skills-popup">
   <img class="x-icon" src="assets/images/close-icon.png" alt="X Icon to close the skills group popup"
        (click)="closePopup()">
-  <h2>New Profile</h2>
+  <div id="new-profile-msg" *ngIf="isAddingTeammate">
+    <h2>New Profile</h2>
+    <p>Please enter your name and choose at least 4 thinking talents to create a new profile.</p>
+  </div>
+  <div id="update-profile-msg" *ngIf="!isAddingTeammate">
+    <h2>Update Profile</h2>
+    <p>Please update your name and/or thinking talents.</p>
+  </div>
   <div id="skills-popup__input-name" [formGroup]="newPersonForm">
     <label for="new-teammate">Name: </label>
     <input type="text" required id="new-teammate" name="new-teammate" placeholder="Michael Jordan" [(ngModel)]="playerName"
@@ -20,4 +27,5 @@
   <form id="skills-popup__submit-entry" [formGroup]="newPersonForm" (ngSubmit)="onSubmit(newPersonForm.value.name)">
     <button id="skills-popup__submit-button" type="submit" [disabled]="!newPersonForm.valid || !anyChecked">Submit</button>
   </form>
+  <p [ngClass]="{'blue-font':numChecked==4}">Selections needed to continue: {{numChecked}} / 4</p>
 </div>

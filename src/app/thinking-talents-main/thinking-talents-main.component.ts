@@ -34,8 +34,12 @@ export class ThinkingTalentsMainComponent implements OnInit {
   };
   teammates: Player[] = [
     {
-      name: 'Devin Biggers',
+      name: 'Devin',
       talents: [this.randomSkill, this.randomSkill2, this.randomSkill3]
+    },
+    {
+      name: 'Jeanie',
+      talents: [this.randomSkill3, this.randomSkill2, this.randomSkill]
     },
   ];
 
