@@ -35,7 +35,7 @@ export class SkillsPopupComponent implements OnInit, OnChanges, OnDestroy {
 
   get numChecked(): number {
     const numChecked = this.skillsData.filter(it => it.checked);
-    return numChecked.length > 3 ? 4 : numChecked.length;
+    return numChecked.length;
   }
 
   get anyChecked(): boolean {

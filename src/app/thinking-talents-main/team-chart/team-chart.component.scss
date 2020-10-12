@@ -43,15 +43,15 @@
       td {
         padding-left: 1rem;
       }
-    }
 
-    .talent-bubbles {
-      border: lightgrey solid .5px;
-      background-color: lightgrey;
-      border-radius: 5px;
-      padding: .1rem .1rem;
-      font-size: 11px;
-      margin: .1rem;
+      .talent-bubbles {
+        border: black solid .5px;
+        background-color: rgb(51, 137, 242, 0.4);
+        border-radius: 5px;
+        padding: .1rem .2rem;
+        font-size: 12px;
+        margin: .1rem;
+      }
     }
   }
 }
