@@ -18,6 +18,6 @@
     {{skill.name}}
   </button>
   <form id="skills-popup__submit-entry" [formGroup]="newPersonForm" (ngSubmit)="onSubmit(newPersonForm.value.name)">
-    <button id="skills-popup__submit-button" type="submit" [disabled]="!newPersonForm.valid">Submit</button>
+    <button id="skills-popup__submit-button" type="submit" [disabled]="!newPersonForm.valid || !anyChecked">Submit</button>
   </form>
 </div>

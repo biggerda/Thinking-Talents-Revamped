@@ -33,6 +33,11 @@ export class SkillsPopupComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   updateTeammateOnChartEmitter = new EventEmitter<UpdatedPlayerData>();
 
+  get anyChecked(): boolean {
+    const numChecked = this.skillsData.filter(it => it.checked);
+    return numChecked.length > 0;
+  }
+
   @HostListener('click')
   clickInsideElement() {
     this._clickedInside = true;
