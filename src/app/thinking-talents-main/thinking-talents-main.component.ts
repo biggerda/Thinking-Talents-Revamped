@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {skillsData} from '../../entities/skillsData';
 import {Skill} from '../../entities/Skill';
 import {Player} from '../../entities/Player';
+import {UpdatedPlayerData} from '../../entities/UpdatedPlayerData';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -11,24 +12,30 @@ import {Player} from '../../entities/Player';
 export class ThinkingTalentsMainComponent implements OnInit {
   skillsData: Skill[] = skillsData;
   toggleSkills = false;
+  addNewTeammate = false;
+  updatedTeammate: UpdatedPlayerData;
   randomSkill: Skill = {
     name: 'Thinking Logically',
     description: 'Blah blah blah',
     checked: true,
     type: 'whole'
   };
+  randomSkill2: Skill = {
+    name: 'Organizing',
+    description: 'Blah blah blah',
+    checked: true,
+    type: 'whole'
+  };
+  randomSkill3: Skill = {
+    name: 'Thinking Alone',
+    description: 'Blah blah blah',
+    checked: true,
+    type: 'whole'
+  };
   teammates: Player[] = [
     {
-      name: 'Jennie Mai',
-      talents: []
-    },
-    {
-      name: 'Larry Halls',
-      talents: []
-    },
-    {
       name: 'Devin Biggers',
-      talents: [this.randomSkill, this.randomSkill, this.randomSkill, this.randomSkill, this.randomSkill]
+      talents: [this.randomSkill, this.randomSkill2, this.randomSkill3]
     },
   ];
 
@@ -46,7 +53,36 @@ export class ThinkingTalentsMainComponent implements OnInit {
     this.teammates = team;
   }
 
-  addTeammate(teammate: Player) {
+  addTeammate() {
+    this.addNewTeammate = true;
+    this.toggleSkillsPopup(true);
+  }
+
+  updateTeammate(playerToUpdate: UpdatedPlayerData) {
+    this.addNewTeammate = false;
+    // playerToUpdate.player.talents.forEach(talent => {
+    //   console.log(`updateTeammate:: current talents ${talent.name}`);
+    // });
+    this.updatedTeammate = playerToUpdate;
+    this.toggleSkillsPopup(true);
+  }
+
+  updateTeammateOnChart(teammate: UpdatedPlayerData) {
+    teammate.player.talents.forEach(talent => {
+      if (talent.checked) {
+        console.log(`updateTeammateOnChart //// Checked Talent for Updated Teammate::: ${talent.name}`);
+      }
+    });
+  }
+
+  addTeammatetoChart(teammate: Player) {
     this.teammates.push(teammate);
+  }
+
+  logCurrentTeam() {
+    this.teammates.forEach(player => {
+      const newTeammateTalents = player.talents.filter(talent => talent.checked);
+      console.log(`Player: ${player.name} ||| Talents: ${newTeammateTalents.map(it => it.name)}`);
+    });
   }
 }

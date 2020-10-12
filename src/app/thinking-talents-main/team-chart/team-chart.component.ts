@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Player} from '../../../entities/Player';
+import {UpdatedPlayerData} from '../../../entities/UpdatedPlayerData';
 
 @Component({
   selector: 'app-team-chart',
@@ -8,7 +9,10 @@ import {Player} from '../../../entities/Player';
 })
 export class TeamChartComponent implements OnInit {
   @Output()
-  skillsPopupEmitter = new EventEmitter<boolean>();
+  addPlayerEmitter = new EventEmitter<boolean>();
+
+  @Output()
+  updatePlayerEmitter = new EventEmitter<UpdatedPlayerData>();
 
   @Output()
   updateTeamEmitter = new EventEmitter<Player[]>();
@@ -23,15 +27,15 @@ export class TeamChartComponent implements OnInit {
   }
 
   addPerson() {
-    this.skillsPopupEmitter.emit(true);
+    this.addPlayerEmitter.emit(true);
   }
 
   viewPerson() {
 
   }
 
-  editPerson() {
-
+  editPerson(index: number, player: Player) {
+    this.updatePlayerEmitter.emit({index, player});
   }
 
   removePerson(playerName: string) {

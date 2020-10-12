@@ -1,13 +1,17 @@
 <div id="thinking-talents-main">
   <h1>Team Maps</h1>
   <app-team-chart
-    (skillsPopupEmitter)="toggleSkillsPopup($event)"
+    (addPlayerEmitter)="addTeammate()"
+    (updatePlayerEmitter)="updateTeammate($event)"
     (updateTeamEmitter)="updateTeam($event)"
     [teammates]="teammates">
   </app-team-chart>
   <app-skills-popup
     (skillsPopupEmitter)="toggleSkillsPopup($event)"
-    (newTeammateEmitter)="addTeammate($event)"
+    (addTeammatetoChartEmitter)="addTeammatetoChart($event)"
+    (updateTeammateOnChartEmitter)="updateTeammateOnChart($event)"
+    [updatedTeammate]="updatedTeammate"
+    [isAddingTeammate]="addNewTeammate"
     *ngIf="toggleSkills">
   </app-skills-popup>
 </div>

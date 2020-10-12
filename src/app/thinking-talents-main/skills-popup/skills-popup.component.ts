@@ -1,8 +1,9 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {skillsData} from '../../../entities/skillsData';
 import {Skill} from '../../../entities/Skill';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Player} from '../../../entities/Player';
+import {UpdatedPlayerData} from '../../../entities/UpdatedPlayerData';
 
 @Component({
   selector: 'app-skills-popup',
@@ -10,17 +11,27 @@ import {Player} from '../../../entities/Player';
   styleUrls: ['./skills-popup.component.scss']
 })
 
-export class SkillsPopupComponent implements OnInit {
+export class SkillsPopupComponent implements OnInit, OnChanges, OnDestroy {
   skillsData: Skill[] = skillsData;
   private _clickedInside = true;
+  playerName: string;
   newTeammate: Player;
-  newPersonName: FormGroup;
+  newPersonForm: FormGroup;
+
+  @Input()
+  updatedTeammate: UpdatedPlayerData;
+
+  @Input()
+  isAddingTeammate: boolean;
 
   @Output()
   skillsPopupEmitter = new EventEmitter<boolean>();
 
   @Output()
-  newTeammateEmitter = new EventEmitter<Player>();
+  addTeammatetoChartEmitter = new EventEmitter<Player>();
+
+  @Output()
+  updateTeammateOnChartEmitter = new EventEmitter<UpdatedPlayerData>();
 
   @HostListener('click')
   clickInsideElement() {
@@ -36,12 +47,39 @@ export class SkillsPopupComponent implements OnInit {
   }
 
   constructor() {
-    this.newPersonName = new FormGroup({
+    this.newPersonForm = new FormGroup({
       name: new FormControl('', Validators.required)
     });
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.isAddingTeammate ? this.addNewTeammate()
+      : this.updateTeammate(this.updatedTeammate);
+  }
+
+  ngOnDestroy() {
+    this.resetData();
+  }
+
+  addNewTeammate() {
+    this.resetData();
+  }
+
+  updateTeammate(updatedPlayerData: UpdatedPlayerData) {
+    const checkedTalents = updatedPlayerData.player.talents.map(talent => talent);
+
+    this.skillsData.forEach((talent, index) => {
+      checkedTalents.forEach(checkedTalent => {
+        if (checkedTalent.name === talent.name) {
+          this.skillsData[index].checked = true;
+        }
+      });
+    });
+
+    this.playerName = updatedPlayerData.player.name;
   }
 
   toggleSelectTalent(skill: Skill) {
@@ -60,19 +98,24 @@ export class SkillsPopupComponent implements OnInit {
     const selectedTalents = this.listSelectedTalents();
     // const selectedTalentsNames = selectedTalents.map(skill => skill.name);
 
-    this.newTeammate = {
-      name: customerName,
-      talents: selectedTalents
-    };
-
-    this.newTeammateEmitter.emit(this.newTeammate);
+    if (this.isAddingTeammate) {
+      this.newTeammate = {
+        name: customerName,
+        talents: selectedTalents
+      };
+      this.addTeammatetoChartEmitter.emit(this.newTeammate);
+    } else {
+      this.updatedTeammate.player.name = customerName;
+      this.updatedTeammate.player.talents = this.skillsData.filter(it => it.checked);
+      this.updateTeammateOnChartEmitter.emit(this.updatedTeammate);
+    }
 
     this.closePopup();
-    this.reset();
   }
 
-  reset() {
-    this.newPersonName.reset();
+  resetData() {
+    this.playerName = null;
+    this.newPersonForm.reset();
     this.skillsData.forEach(skill => skill.checked = false);
   }
 
