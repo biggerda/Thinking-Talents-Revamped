@@ -3,6 +3,7 @@
   border: solid black 1px;
   padding: 1.5rem;
   width: 40rem;
+  height: 35.5rem;
 
   /*Modal Popup*/
   position: fixed;
@@ -17,7 +18,11 @@
     cursor: pointer;
   }
 
-  #skills-popup__input-name,
+  #skills-popup__input-name {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
   #skills-popup__submit-entry {
     text-align: center;
   }
@@ -26,7 +31,7 @@
     display: inline-block;
     cursor: pointer;
     padding: .5rem;
-    margin: .5rem;
+    margin: .3rem;
     width: 9rem;
     text-align: center;
     border: solid grey 1px;

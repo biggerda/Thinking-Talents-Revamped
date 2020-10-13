@@ -9,6 +9,11 @@
     <tr id="team-chart__header-row">
       <th>Name</th><th>Thinking Talents</th><th>Actions</th>
     </tr>
+    <tr class="team-chart__teammates greyed-out" *ngIf="teammates.length==0">
+      <td>Add new profile</td>
+      <td>No talents yet...</td>
+      <td>N/a</td>
+    </tr>
     <tr class="team-chart__teammates" *ngFor="let person of teammates; let i = index">
       <td>{{person.name}}</td>
       <td>
