@@ -30,8 +30,11 @@ export class TeamChartComponent implements OnInit {
     this.addPlayerEmitter.emit(true);
   }
 
-  viewPerson() {
-
+  viewPerson(player: Player) {
+    console.log(`Person: ${player.name}`);
+    console.log(`Thinking Talent Preference: ${player.talentPref}`);
+    console.log(`Blind Spot: ${player.blindSpot}`);
+    console.log(`A: ${player.aTalents}, I: ${player.iTalents}, R: ${player.rTalents}, P: ${player.pTalents},`);
   }
 
   editPerson(index: number, player: Player) {

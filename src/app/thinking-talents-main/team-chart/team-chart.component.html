@@ -20,7 +20,7 @@
         <span class="talent-bubbles" *ngFor="let talent of person.talents">{{talent.name}}</span>
       </td>
       <td>
-        <button class="team-chart__actions-buttons" (click)="viewPerson()">View</button>
+        <button class="team-chart__actions-buttons" (click)="viewPerson(person)">View</button>
         <button class="team-chart__actions-buttons" (click)="editPerson(i, person)">Edit</button>
         <button class="team-chart__actions-buttons" (click)="removePerson(person.name)">Remove</button>
       </td>

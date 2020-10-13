@@ -64,19 +64,8 @@ export class ThinkingTalentsMainComponent implements OnInit {
 
   updateTeammate(playerToUpdate: UpdatedPlayerData) {
     this.addNewTeammate = false;
-    // playerToUpdate.player.talents.forEach(talent => {
-    //   console.log(`updateTeammate:: current talents ${talent.name}`);
-    // });
     this.updatedTeammate = playerToUpdate;
     this.toggleSkillsPopup(true);
-  }
-
-  updateTeammateOnChart(teammate: UpdatedPlayerData) {
-    teammate.player.talents.forEach(talent => {
-      if (talent.checked) {
-        console.log(`updateTeammateOnChart //// Checked Talent for Updated Teammate::: ${talent.name}`);
-      }
-    });
   }
 
   addTeammatetoChart(teammate: Player) {

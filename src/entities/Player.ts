@@ -9,5 +9,4 @@ export interface Player {
   iTalents?: number;
   talentPref?: string;
   blindSpot?: string;
-  wb?: boolean;
 }
