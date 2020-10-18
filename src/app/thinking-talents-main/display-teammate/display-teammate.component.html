@@ -1,0 +1,21 @@
+<div id="display-teammate__container">
+  <img class="x-icon" src="assets/images/close-icon.png" alt="X Icon to close the skills group popup"
+       (click)="closePopup()">
+  <div id="new-profile-msg">
+    <h2>Teammate: {{playerName}}</h2>
+  </div>
+  <div id="update-profile-msg">
+    <h3>Skills Data</h3>
+    <div *ngFor="let skill of skillsData">
+      {{skill.name}}
+    </div>
+
+    <h3>Skills Breakdown</h3>
+    <p>Analytical Skills: {{numAnalyticalTalents}}</p>
+    <p>Procedural Skills: {{numProceduralTalents}}</p>
+    <p>Innovative Skills: {{numInnovativeTalents}}</p>
+    <p>Relational Skills: {{numRelationalTalents}}</p>
+    <p>Talent Preference: {{talentPreference}}</p>
+    <p>Blind Spot: {{blindSpot}}</p>
+  </div>
+</div>

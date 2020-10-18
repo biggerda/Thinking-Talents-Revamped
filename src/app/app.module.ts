@@ -8,6 +8,7 @@ import { SkillsPopupComponent } from './thinking-talents-main/skills-popup/skill
 import { TeamChartComponent } from './thinking-talents-main/team-chart/team-chart.component';
 import {ThinkingTalentsMainComponent} from './thinking-talents-main/thinking-talents-main.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DisplayTeammateComponent } from './thinking-talents-main/display-teammate/display-teammate.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     SkillsPopupComponent,
     TeamChartComponent,
-    ThinkingTalentsMainComponent
+    ThinkingTalentsMainComponent,
+    DisplayTeammateComponent
   ],
   imports: [
     BrowserModule,

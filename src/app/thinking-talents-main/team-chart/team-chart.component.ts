@@ -12,6 +12,9 @@ export class TeamChartComponent implements OnInit {
   addPlayerEmitter = new EventEmitter<boolean>();
 
   @Output()
+  viewPlayerEmitter = new EventEmitter<Player>();
+
+  @Output()
   updatePlayerEmitter = new EventEmitter<UpdatedPlayerData>();
 
   @Output()
@@ -31,10 +34,7 @@ export class TeamChartComponent implements OnInit {
   }
 
   viewPerson(player: Player) {
-    console.log(`Person: ${player.name}`);
-    console.log(`Thinking Talent Preference: ${player.talentPref}`);
-    console.log(`Blind Spot: ${player.blindSpot}`);
-    console.log(`A: ${player.aTalents}, I: ${player.iTalents}, R: ${player.rTalents}, P: ${player.pTalents},`);
+    this.viewPlayerEmitter.emit(player);
   }
 
   editPerson(index: number, player: Player) {

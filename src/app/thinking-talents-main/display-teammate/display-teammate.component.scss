@@ -1,4 +1,4 @@
-#skills-popup__container {
+#display-teammate__container {
   background-color: white;
   border: solid black 1px;
   padding: 1.5rem;
@@ -18,16 +18,16 @@
     cursor: pointer;
   }
 
-  #skills-popup__input-name {
+  #display-teammate__input-name {
     text-align: center;
     margin-bottom: 1rem;
   }
 
-  #skills-popup__submit-entry {
+  #display-teammate__submit-entry {
     text-align: center;
   }
 
-  .skills-popup__skill-select {
+  .display-teammate__skill-select {
     display: inline-block;
     cursor: pointer;
     padding: .5rem;
@@ -46,7 +46,7 @@
     background-color: #338cf2 !important;
   }
 
-  .skills-popup__skill-select:hover {
+  .display-teammate__skill-select:hover {
     color: white;
     background-color: #7cb1ee;
   }

@@ -2,6 +2,7 @@
   <h1>Team Map</h1>
   <app-team-chart
     (addPlayerEmitter)="addTeammate()"
+    (viewPlayerEmitter)="viewTeammate($event)"
     (updatePlayerEmitter)="updateTeammate($event)"
     (updateTeamEmitter)="updateTeam($event)"
     [teammates]="teammates">
@@ -13,5 +14,11 @@
     [isAddingTeammate]="addNewTeammate"
     *ngIf="toggleSkills">
   </app-skills-popup>
+  <app-display-teammate
+    (displayTeammatePopupEmitter)="toggleDisplayTeammatePopup($event)"
+    [teammate]="displayedTeammate"
+    *ngIf="toggleDisplayTeammate"
+  >
+  </app-display-teammate>
 </div>
 <div id="screen-dimmer" *ngIf="toggleSkills"></div>

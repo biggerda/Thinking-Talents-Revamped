@@ -12,8 +12,10 @@ import {UpdatedPlayerData} from '../../entities/UpdatedPlayerData';
 export class ThinkingTalentsMainComponent implements OnInit {
   skillsData: Skill[] = skillsData;
   toggleSkills = false;
+  toggleDisplayTeammate = false;
   addNewTeammate = false;
   updatedTeammate: UpdatedPlayerData;
+  displayedTeammate: Player;
   randomSkill: Skill = {
     name: 'Thinking Logically',
     description: 'Blah blah blah',
@@ -53,6 +55,10 @@ export class ThinkingTalentsMainComponent implements OnInit {
     this.toggleSkills = activated;
   }
 
+  toggleDisplayTeammatePopup(activated: boolean) {
+    this.toggleDisplayTeammate = activated;
+  }
+
   updateTeam(team: Player[]) {
     this.teammates = team;
   }
@@ -60,6 +66,11 @@ export class ThinkingTalentsMainComponent implements OnInit {
   addTeammate() {
     this.addNewTeammate = true;
     this.toggleSkillsPopup(true);
+  }
+
+  viewTeammate(playerToView: Player) {
+    this.displayedTeammate = playerToView;
+    this.toggleDisplayTeammatePopup(true);
   }
 
   updateTeammate(playerToUpdate: UpdatedPlayerData) {
