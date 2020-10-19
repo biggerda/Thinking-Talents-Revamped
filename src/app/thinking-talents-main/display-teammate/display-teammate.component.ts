@@ -42,14 +42,25 @@ export class DisplayTeammateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.playerName = this.teammate.name;
-    this.skillsData = [...this.teammate.talents];
-    this.numAnalyticalTalents = this.teammate.aTalents;
-    this.numProceduralTalents = this.teammate.pTalents;
-    this.numRelationalTalents = this.teammate.rTalents;
-    this.numInnovativeTalents = this.teammate.iTalents;
-    this.talentPreference = this.teammate.talentPref;
-    this.blindSpot = this.teammate.blindSpot;
+    const {
+      name,
+      talents,
+      aTalents,
+      pTalents,
+      rTalents,
+      iTalents,
+      talentPref,
+      blindSpot
+    } = this.teammate;
+
+    this.playerName = name;
+    this.skillsData = [...talents];
+    this.numAnalyticalTalents = aTalents;
+    this.numProceduralTalents = pTalents;
+    this.numRelationalTalents = rTalents;
+    this.numInnovativeTalents = iTalents;
+    this.talentPreference = talentPref;
+    this.blindSpot = blindSpot;
   }
 
   closePopup() {

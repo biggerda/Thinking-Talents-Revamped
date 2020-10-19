@@ -1,21 +1,25 @@
 <div id="display-teammate__container">
   <img class="x-icon" src="assets/images/close-icon.png" alt="X Icon to close the skills group popup"
        (click)="closePopup()">
-  <div id="new-profile-msg">
+  <div id="display-teammate__name">
     <h2>Teammate: {{playerName}}</h2>
   </div>
-  <div id="update-profile-msg">
+  <div id="display-teammate__msg">
     <h3>Skills Data</h3>
-    <div *ngFor="let skill of skillsData">
+    <div class="display-teammate__skill" *ngFor="let skill of skillsData">
       {{skill.name}}
     </div>
 
-    <h3>Skills Breakdown</h3>
-    <p>Analytical Skills: {{numAnalyticalTalents}}</p>
-    <p>Procedural Skills: {{numProceduralTalents}}</p>
-    <p>Innovative Skills: {{numInnovativeTalents}}</p>
-    <p>Relational Skills: {{numRelationalTalents}}</p>
-    <p>Talent Preference: {{talentPreference}}</p>
-    <p>Blind Spot: {{blindSpot}}</p>
+    <h3>Skills Breakdown ({{skillsData.length}} total)</h3>
+
+    <div id="display-teammate__skills-breakdown">
+      <div class="skill-type">Analytical Skills: {{numAnalyticalTalents}}</div>
+      <div class="skill-type">Procedural Skills: {{numProceduralTalents}}</div>
+      <div class="skill-type">Innovative Skills: {{numInnovativeTalents}}</div>
+      <div class="skill-type">Relational Skills: {{numRelationalTalents}}</div>
+    </div>
+
+    <div class="">Talent Preference: {{talentPreference}}</div>
+    <div class="">Blind Spot: {{blindSpot}}</div>
   </div>
 </div>

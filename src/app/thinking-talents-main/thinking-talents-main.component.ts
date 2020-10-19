@@ -10,38 +10,48 @@ import {UpdatedPlayerData} from '../../entities/UpdatedPlayerData';
   styleUrls: ['./thinking-talents-main.component.scss']
 })
 export class ThinkingTalentsMainComponent implements OnInit {
-  skillsData: Skill[] = skillsData;
+  skillsDataTesting: Skill[] = skillsData;
   toggleSkills = false;
   toggleDisplayTeammate = false;
   addNewTeammate = false;
   updatedTeammate: UpdatedPlayerData;
   displayedTeammate: Player;
-  randomSkill: Skill = {
-    name: 'Thinking Logically',
-    description: 'Blah blah blah',
-    checked: true,
-    type: 'whole'
-  };
-  randomSkill2: Skill = {
-    name: 'Organizing',
-    description: 'Blah blah blah',
-    checked: true,
-    type: 'whole'
-  };
-  randomSkill3: Skill = {
-    name: 'Thinking Alone',
-    description: 'Blah blah blah',
-    checked: true,
-    type: 'whole'
-  };
+  randomSkill: Skill = this.skillsDataTesting[5];
+  randomSkill2: Skill = this.skillsDataTesting[10];
+  randomSkill3: Skill = this.skillsDataTesting[15];
+  randomSkill4: Skill = this.skillsDataTesting[7];
+  randomSkill5: Skill = this.skillsDataTesting[12];
+  randomSkill6: Skill = this.skillsDataTesting[17];
   teammates: Player[] = [
     {
       name: 'Devin',
-      talents: [this.randomSkill, this.randomSkill2, this.randomSkill3]
+      talents: [
+        {...this.randomSkill, checked: true},
+        {...this.randomSkill2, checked: true},
+        {...this.randomSkill3, checked: true},
+        {...this.randomSkill6, checked: true},
+      ],
+      aTalents: 1,
+      iTalents: 0,
+      rTalents: 2,
+      pTalents: 0,
+      talentPref: 'Relational',
+      blindSpot: 'Entrepreneur (I/P)'
     },
     {
       name: 'Jeanie',
-      talents: [this.randomSkill3, this.randomSkill2, this.randomSkill]
+      talents: [
+        {...this.randomSkill2, checked: true},
+        {...this.randomSkill4, checked: true},
+        {...this.randomSkill5, checked: true},
+        {...this.randomSkill6, checked: true},
+      ],
+      aTalents: 1,
+      iTalents: 0,
+      rTalents: 1,
+      pTalents: 0,
+      talentPref: 'Facts vs. Feelings (A/R)',
+      blindSpot: 'Entrepreneur (I/P)'
     },
   ];
 
