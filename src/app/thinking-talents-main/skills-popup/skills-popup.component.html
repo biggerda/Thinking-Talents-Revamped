@@ -11,23 +11,32 @@
   </div>
   <div id="skills-popup__input-name" [formGroup]="newPersonForm">
     <label for="new-teammate">Name: </label>
-    <input type="text" required id="new-teammate" name="new-teammate" placeholder="Michael Jordan" [(ngModel)]="playerName"
-           formControlName="name" [ngClass]="{'is-invalid': newPersonForm.get('name').invalid && newPersonForm.get('name').touched}">
+    <input type="text" required id="new-teammate" name="new-teammate" placeholder="Michael Jordan"
+           [(ngModel)]="playerName"
+           formControlName="name"
+           [ngClass]="{'is-invalid': newPersonForm.get('name').invalid && newPersonForm.get('name').touched}">
     <div class="invalid-feedback" *ngIf="newPersonForm.get('name').invalid && newPersonForm.get('name').touched">
       <div *ngIf="newPersonForm.get('name').errors.required">Must enter a name.</div>
       <div *ngIf="newPersonForm.get('name').errors.minlength">Name must be at least 3 characters long</div>
     </div>
   </div>
-  <button class="skills-popup__skill-select"
+  <button mat-stroked-button
+          class="skills-popup__skill-select"
           *ngFor="let skill of skillsData"
           [ngClass]="{'active': skill.checked}"
           (click)="toggleSelectTalent(skill)">
     {{skill.name}}
   </button>
   <form id="skills-popup__submit-entry" [formGroup]="newPersonForm" (ngSubmit)="onSubmit(newPersonForm.value.name)">
-    <button id="skills-popup__submit-button" type="submit" [disabled]="!newPersonForm.valid || !anyChecked">Submit</button>
+    <button mat-raised-button
+            id="skills-popup__submit-button"
+            type="submit"
+            [disabled]="!newPersonForm.valid || !anyChecked">
+      Submit
+    </button>
   </form>
-  <p [ngClass]="{'blue-font':numChecked>=4,'red-font':numChecked>10}">
+  <p id="skills-popup__selections-msg"
+    [ngClass]="{'blue-font':numChecked>=4,'red-font':numChecked>10}">
     Selections: {{numChecked}}
     <span *ngIf="numChecked<4">(Choose at least 4 talents)</span>
     <span *ngIf="numChecked>10">(Please choose 10 talents at most)</span>

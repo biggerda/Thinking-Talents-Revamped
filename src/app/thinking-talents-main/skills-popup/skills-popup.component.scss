@@ -1,9 +1,8 @@
 #skills-popup__container {
   background-color: white;
   border: solid black 1px;
-  padding: 1.5rem;
-  width: 40rem;
-  height: 35.5rem;
+  padding: 1rem;
+  width: 30rem;
 
   /*Modal Popup*/
   position: fixed;
@@ -20,35 +19,38 @@
 
   #skills-popup__input-name {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
+    font-size: 14px;
+  }
+
+  #new-profile-msg p {
+    font-size: 14px;
   }
 
   #skills-popup__submit-entry {
     text-align: center;
+    margin-top: .2rem;
   }
 
   .skills-popup__skill-select {
     display: inline-block;
     cursor: pointer;
-    padding: .5rem;
-    margin: .3rem;
-    width: 9rem;
+    padding: 0 .3rem;
+    margin: .2rem .3rem;
+    font-size: 12px;
     text-align: center;
-    border: solid grey 1px;
-    border-radius: 25px;
-    background-color: lightgrey;
+    border-radius: 8px;
     overflow: hidden;
     white-space: nowrap;
+  }
+
+  #skills-popup__selections-msg {
+    font-size: 12px;
   }
 
   .active {
     color: white;
     background-color: #338cf2 !important;
-  }
-
-  .skills-popup__skill-select:hover {
-    color: white;
-    background-color: #7cb1ee;
   }
 
   .blue-font {

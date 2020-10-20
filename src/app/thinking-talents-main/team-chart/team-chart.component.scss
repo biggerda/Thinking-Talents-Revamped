@@ -1,15 +1,8 @@
 #team-chart {
   #add-profile-button {
     background-color: #3389f2;
-    width: 6.5rem;
     color: white;
-    padding: .8rem 1rem;
-    text-align: center;
-    border-radius: 5px;
-    border: solid transparent 1px;
-    cursor: pointer;
     float: right;
-    margin: 0 1rem;
   }
 
   #team-chart__table {
@@ -17,11 +10,13 @@
     width: 100%;
 
     .team-chart__actions-buttons {
-      padding: .7rem 1rem;
-      border: solid black 1px;
-      border-radius: 10px;
-      margin-right: .5rem;
-      cursor: pointer;
+      background-color: rgb(51, 137, 242, 0.7);
+      margin-right: .6rem;
+
+      img {
+        width: 1.4rem;
+        transform: translateY(-1px);
+      }
     }
 
     tr {
@@ -38,19 +33,18 @@
     }
 
     .team-chart__teammates {
-      height: 6rem;
+      height: 6.5rem;
 
       td {
         padding-left: 1rem;
       }
 
       .talent-bubbles {
-        border: black solid .5px;
         background-color: rgb(51, 137, 242, 0.7);
         color: white;
         border-radius: 5px;
-        padding: .1rem .2rem;
-        font-size: 12px;
+        padding: .3rem .5rem;
+        font-size: 14px;
         margin: .1rem;
         display: inline-block;
       }

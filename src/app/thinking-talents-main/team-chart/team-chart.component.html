@@ -1,10 +1,10 @@
 <div id="team-chart">
-  <button id="add-profile-button" (click)="addPerson()">Add profile</button>
+  <button mat-raised-button id="add-profile-button" (click)="addPerson()">Add profile</button>
   <table id="team-chart__table">
     <colgroup>
-      <col style="width:20%">
-      <col style="width:45%">
-      <col style="width:35%">
+      <col style="width:21%">
+      <col style="width:54%">
+      <col style="width:25%">
     </colgroup>
     <tr id="team-chart__header-row">
       <th>Name</th><th>Thinking Talents</th><th>Actions</th>
@@ -20,9 +20,15 @@
         <span class="talent-bubbles" *ngFor="let talent of person.talents">{{talent.name}}</span>
       </td>
       <td>
-        <button class="team-chart__actions-buttons" (click)="viewPerson(person)">View</button>
-        <button class="team-chart__actions-buttons" (click)="editPerson(i, person)">Edit</button>
-        <button class="team-chart__actions-buttons" (click)="removePerson(person.name)">Remove</button>
+        <button mat-mini-fab class="team-chart__actions-buttons" (click)="viewPerson(person)">
+          <img src="assets/images/view.svg" alt="View Person">
+        </button>
+        <button mat-mini-fab class="team-chart__actions-buttons" (click)="editPerson(i, person)">
+          <img src="assets/images/edit.svg" alt="Edit Person">
+        </button>
+        <button mat-mini-fab class="team-chart__actions-buttons" (click)="removePerson(person.name)">
+          <img src="assets/images/remove.svg" alt="Remove Person from list">
+        </button>
       </td>
     </tr>
   </table>

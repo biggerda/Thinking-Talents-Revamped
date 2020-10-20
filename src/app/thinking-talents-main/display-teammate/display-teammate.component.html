@@ -4,22 +4,37 @@
   <div id="display-teammate__name">
     <h2>Teammate: {{playerName}}</h2>
   </div>
+
   <div id="display-teammate__msg">
-    <h3>Skills Data</h3>
+    <div *ngIf="talentPreference!='Whole-Brained'">
+      <div class="skill-results">
+        <div class="header">Preference</div>
+        <div class="result">{{talentPreference}}</div>
+      </div>
+      <div class="skill-results">
+        <div class="header">Blind Spot</div>
+        <div class="result">{{blindSpot}}</div>
+      </div>
+    </div>
+    <div *ngIf="talentPreference=='Whole-Brained'">
+      <div class="skill-results-whole">
+        <div class="header">Preference</div>
+        <div class="result">{{talentPreference}}</div>
+      </div>
+    </div>
+
+
+    <h4>Talent Breakdown ({{skillsData.length}} total)</h4>
+    <div id="display-teammate__skills-breakdown">
+      <div class="skill-type">Analytical: {{numAnalyticalTalents}}</div>
+      <div class="skill-type">Procedural: {{numProceduralTalents}}</div>
+      <div class="skill-type">Innovative: {{numInnovativeTalents}}</div>
+      <div class="skill-type">Relational: {{numRelationalTalents}}</div>
+    </div>
+
+    <h4>Thinking Talents</h4>
     <div class="display-teammate__skill" *ngFor="let skill of skillsData">
       {{skill.name}}
     </div>
-
-    <h3>Skills Breakdown ({{skillsData.length}} total)</h3>
-
-    <div id="display-teammate__skills-breakdown">
-      <div class="skill-type">Analytical Skills: {{numAnalyticalTalents}}</div>
-      <div class="skill-type">Procedural Skills: {{numProceduralTalents}}</div>
-      <div class="skill-type">Innovative Skills: {{numInnovativeTalents}}</div>
-      <div class="skill-type">Relational Skills: {{numRelationalTalents}}</div>
-    </div>
-
-    <div class="">Talent Preference: {{talentPreference}}</div>
-    <div class="">Blind Spot: {{blindSpot}}</div>
   </div>
 </div>
