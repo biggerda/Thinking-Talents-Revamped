@@ -8,9 +8,9 @@ import {SkillsPopupComponent} from './thinking-talents-main/skills-popup/skills-
 import {TeamChartComponent} from './thinking-talents-main/team-chart/team-chart.component';
 import {ThinkingTalentsMainComponent} from './thinking-talents-main/thinking-talents-main.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DisplayTeammateComponent} from './thinking-talents-main/display-teammate/display-teammate.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -18,8 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
     HeaderComponent,
     SkillsPopupComponent,
     TeamChartComponent,
-    ThinkingTalentsMainComponent,
-    DisplayTeammateComponent
+    ThinkingTalentsMainComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +27,8 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

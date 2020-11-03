@@ -1,5 +1,18 @@
 <div id="thinking-talents-main">
   <h1>Team Map</h1>
+
+  <mat-checkbox
+    id="team-name-checkbox"
+    type="checkbox"
+    [checked]="disableTeamNameInput"
+    (change)="toggleTeamNameInput()">
+    Team Name?
+  </mat-checkbox>
+  <input
+    id="team-name-input"
+    type="text"
+    [disabled]="disableTeamNameInput">
+
   <app-team-chart
     (addPlayerEmitter)="addTeammate()"
     (viewPlayerEmitter)="viewTeammate($event)"
@@ -14,11 +27,5 @@
     [isAddingTeammate]="addNewTeammate"
     *ngIf="toggleSkills">
   </app-skills-popup>
-  <app-display-teammate
-    (displayTeammatePopupEmitter)="toggleDisplayTeammatePopup($event)"
-    [teammate]="displayedTeammate"
-    *ngIf="toggleDisplayTeammate"
-  >
-  </app-display-teammate>
 </div>
 <div id="screen-dimmer" *ngIf="toggleSkills||toggleDisplayTeammate"></div>

@@ -51,7 +51,59 @@
     }
 
     .greyed-out {
-      color: rgba(211,211,211);
+      color: rgba(211, 211, 211);
+    }
+  }
+
+  #display-teammate__analysis {
+
+    .skill-results {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      border: lightgrey solid .5px;
+      background-color: white;
+      color: black;
+      border-radius: 5px;
+      padding: .5rem;
+      width: 14rem;
+      height: 2.5rem;
+    }
+
+    #display-teammate__not-whole {
+      display: flex;
+      flex-direction: column;
+
+      .preference {
+        .header {
+          font-size: 14px;
+        }
+        .result {
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+
+      .skill-results__blind {
+        margin: .2rem .3rem 0 0;
+
+        .result {
+          float: right;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  #display-teammate__whole {
+    .whole {
+      .header {
+        font-size: 14px;
+      }
+      .result {
+        font-weight: bold;
+        font-size: 24px;
+      }
     }
   }
 }

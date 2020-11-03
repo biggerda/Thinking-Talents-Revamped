@@ -33,10 +33,6 @@ export class TeamChartComponent implements OnInit {
     this.addPlayerEmitter.emit(true);
   }
 
-  viewPerson(player: Player) {
-    this.viewPlayerEmitter.emit(player);
-  }
-
   editPerson(index: number, player: Player) {
     this.updatePlayerEmitter.emit({index, player});
   }

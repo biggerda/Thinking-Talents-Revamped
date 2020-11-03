@@ -16,12 +16,17 @@ export class ThinkingTalentsMainComponent implements OnInit {
   addNewTeammate = false;
   updatedTeammate: UpdatedPlayerData;
   displayedTeammate: Player;
+  disableTeamNameInput: boolean;
+
+
   randomSkill: Skill = this.skillsDataTesting[5];
   randomSkill2: Skill = this.skillsDataTesting[10];
   randomSkill3: Skill = this.skillsDataTesting[15];
   randomSkill4: Skill = this.skillsDataTesting[7];
   randomSkill5: Skill = this.skillsDataTesting[12];
   randomSkill6: Skill = this.skillsDataTesting[17];
+  randomSkill7: Skill = this.skillsDataTesting[20];
+  randomSkill8: Skill = this.skillsDataTesting[26];
   teammates: Player[] = [
     {
       name: 'Devin',
@@ -30,13 +35,15 @@ export class ThinkingTalentsMainComponent implements OnInit {
         {...this.randomSkill2, checked: true},
         {...this.randomSkill3, checked: true},
         {...this.randomSkill6, checked: true},
+        {...this.randomSkill7, checked: true},
+        {...this.randomSkill8, checked: true},
       ],
       aTalents: 1,
-      iTalents: 0,
+      iTalents: 2,
       rTalents: 2,
-      pTalents: 0,
-      talentPref: 'Relational',
-      blindSpot: 'Entrepreneur (I/P)'
+      pTalents: 1,
+      talentPref: 'Whole-Brained',
+      blindSpot: 'None (Whole-Brained)'
     },
     {
       name: 'Jeanie',
@@ -98,5 +105,9 @@ export class ThinkingTalentsMainComponent implements OnInit {
       const newTeammateTalents = player.talents.filter(talent => talent.checked);
       console.log(`Player: ${player.name} ||| Talents: ${newTeammateTalents.map(it => it.name)}`);
     });
+  }
+
+  toggleTeamNameInput() {
+    console.log(this.disableTeamNameInput);
   }
 }

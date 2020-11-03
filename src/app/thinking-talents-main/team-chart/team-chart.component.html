@@ -2,12 +2,16 @@
   <button mat-raised-button id="add-profile-button" (click)="addPerson()">Add profile</button>
   <table id="team-chart__table">
     <colgroup>
-      <col style="width:21%">
-      <col style="width:54%">
-      <col style="width:25%">
+      <col style="width:15%">
+      <col style="width:40%">
+      <col style="width:30%">
+      <col style="width:15%">
     </colgroup>
     <tr id="team-chart__header-row">
-      <th>Name</th><th>Thinking Talents</th><th>Actions</th>
+      <th>Name</th>
+      <th>Thinking Talents</th>
+      <th>Analysis</th>
+      <th>Actions</th>
     </tr>
     <tr class="team-chart__teammates greyed-out" *ngIf="teammates.length==0">
       <td>Add new profile</td>
@@ -19,10 +23,24 @@
       <td>
         <span class="talent-bubbles" *ngFor="let talent of person.talents">{{talent.name}}</span>
       </td>
+      <td id="display-teammate__analysis">
+        <div id="display-teammate__not-whole" *ngIf="person.talentPref!='Whole-Brained'">
+          <div class="skill-results preference">
+            <div class="header">Preference</div>
+            <div class="result">{{person.talentPref}}</div>
+          </div>
+          <div class="skill-results__blind">
+            <div class="result">- {{person.blindSpot}}</div>
+          </div>
+        </div>
+        <div id="display-teammate__whole" *ngIf="person.talentPref=='Whole-Brained'">
+          <div class="skill-results whole">
+            <div class="header">Preference</div>
+            <div class="result">{{person.talentPref}}</div>
+          </div>
+        </div>
+      </td>
       <td>
-        <button mat-mini-fab class="team-chart__actions-buttons" (click)="viewPerson(person)">
-          <img src="assets/images/view.svg" alt="View Person">
-        </button>
         <button mat-mini-fab class="team-chart__actions-buttons" (click)="editPerson(i, person)">
           <img src="assets/images/edit.svg" alt="Edit Person">
         </button>
