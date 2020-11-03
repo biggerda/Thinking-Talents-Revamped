@@ -1,8 +1,24 @@
 #team-chart {
-  #add-profile-button {
+  .main-buttons{
     background-color: #3389f2;
     color: white;
     float: right;
+    margin-left: .3rem;
+  }
+
+  .reset-button {
+    background-color: red;
+  }
+
+  .generate-button {
+    background-color: darkgreen;
+  }
+
+  #generate-team-map-button {
+    background-color: #3389f2;
+    color: white;
+    float: right;
+    margin: 0 3rem;
   }
 
   #team-chart__table {
@@ -61,7 +77,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      border: lightgrey solid .5px;
+      border: grey solid .5px;
       background-color: white;
       color: black;
       border-radius: 5px;

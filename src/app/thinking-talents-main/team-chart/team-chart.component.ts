@@ -20,6 +20,9 @@ export class TeamChartComponent implements OnInit {
   @Output()
   updateTeamEmitter = new EventEmitter<Player[]>();
 
+  @Output()
+  resetTeamEmitter = new EventEmitter<boolean>();
+
   @Input()
   teammates: Player[];
 
@@ -38,7 +41,19 @@ export class TeamChartComponent implements OnInit {
   }
 
   removePerson(playerName: string) {
-    this.teammates = this.teammates = this.teammates.filter(teammate => teammate.name !== playerName);
-    this.updateTeamEmitter.emit(this.teammates);
+    if (confirm(`Are you sure you want to remove values for ${playerName}?`)) {
+      this.teammates = this.teammates = this.teammates.filter(teammate => teammate.name !== playerName);
+      this.updateTeamEmitter.emit(this.teammates);
+    }
+  }
+
+  generateTeamMap() {
+
+  }
+
+  reset() {
+    if (confirm(`Are you sure you want to start over?`)) {
+      this.resetTeamEmitter.emit(true);
+    }
   }
 }

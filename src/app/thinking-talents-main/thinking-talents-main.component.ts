@@ -100,6 +100,10 @@ export class ThinkingTalentsMainComponent implements OnInit {
     this.teammates.push(teammate);
   }
 
+  resetTeam() {
+    this.teammates = [];
+  }
+
   logCurrentTeam() {
     this.teammates.forEach(player => {
       const newTeammateTalents = player.talents.filter(talent => talent.checked);
