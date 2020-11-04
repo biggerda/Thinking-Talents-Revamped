@@ -43,7 +43,8 @@ export class ThinkingTalentsMainComponent implements OnInit {
       rTalents: 2,
       pTalents: 1,
       talentPref: 'Whole-Brained',
-      blindSpot: 'None (Whole-Brained)'
+      blindSpot: 'None (Whole-Brained)',
+      isDisplayed: true
     },
     {
       name: 'Jeanie',
@@ -58,7 +59,8 @@ export class ThinkingTalentsMainComponent implements OnInit {
       rTalents: 1,
       pTalents: 0,
       talentPref: 'Facts vs. Feelings (A/R)',
-      blindSpot: 'Entrepreneur (I/P)'
+      blindSpot: 'Entrepreneur (I/P)',
+      isDisplayed: true
     },
   ];
 

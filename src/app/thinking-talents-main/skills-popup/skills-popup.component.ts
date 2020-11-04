@@ -121,7 +121,8 @@ export class SkillsPopupComponent implements OnInit, OnChanges, OnDestroy {
       this.newTeammate = {
         name: customerName,
         talents: selectedTalents,
-        ...playerTalentDetails
+        ...playerTalentDetails,
+        isDisplayed: true
       };
       this.addTeammatetoChartEmitter.emit(this.newTeammate);
     } else {

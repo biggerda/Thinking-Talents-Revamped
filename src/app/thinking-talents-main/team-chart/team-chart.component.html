@@ -20,7 +20,10 @@
       <td>No talents yet...</td>
       <td>N/a</td>
     </tr>
-    <tr class="team-chart__teammates" *ngFor="let person of teammates; let i = index">
+    <tr
+      class="team-chart__teammates"
+      *ngFor="let person of teammates; let i = index"
+      [ngClass]="{'removed-item': (removeAllPlayers || !person.isDisplayed)}">
       <td>{{person.name}}</td>
       <td>
         <span class="talent-bubbles" *ngFor="let talent of person.talents">{{talent.name}}</span>
@@ -46,7 +49,7 @@
         <button mat-mini-fab class="team-chart__actions-buttons" (click)="editPerson(i, person)">
           <img src="assets/images/edit.svg" alt="Edit Person">
         </button>
-        <button mat-mini-fab class="team-chart__actions-buttons" (click)="removePerson(person.name)">
+        <button mat-mini-fab class="team-chart__actions-buttons" (click)="removePerson(i, person.name)">
           <img src="assets/images/remove.svg" alt="Remove Person from list">
         </button>
       </td>

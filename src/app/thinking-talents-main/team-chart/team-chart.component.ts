@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Player} from '../../../entities/Player';
 import {UpdatedPlayerData} from '../../../entities/UpdatedPlayerData';
 
@@ -7,7 +7,7 @@ import {UpdatedPlayerData} from '../../../entities/UpdatedPlayerData';
   templateUrl: './team-chart.component.html',
   styleUrls: ['./team-chart.component.scss']
 })
-export class TeamChartComponent implements OnInit {
+export class TeamChartComponent {
   @Output()
   addPlayerEmitter = new EventEmitter<boolean>();
 
@@ -26,10 +26,10 @@ export class TeamChartComponent implements OnInit {
   @Input()
   teammates: Player[];
 
-  constructor() {
-  }
+  removePlayer = false;
+  removeAllPlayers = false;
 
-  ngOnInit() {
+  constructor() {
   }
 
   addPerson() {
@@ -40,10 +40,13 @@ export class TeamChartComponent implements OnInit {
     this.updatePlayerEmitter.emit({index, player});
   }
 
-  removePerson(playerName: string) {
+  removePerson(index: number, playerName: string) {
     if (confirm(`Are you sure you want to remove values for ${playerName}?`)) {
-      this.teammates = this.teammates = this.teammates.filter(teammate => teammate.name !== playerName);
-      this.updateTeamEmitter.emit(this.teammates);
+      this.teammates[index].isDisplayed = false;
+      setTimeout(() => {
+        this.teammates = this.teammates.filter(teammate => teammate.name !== playerName);
+        this.updateTeamEmitter.emit(this.teammates);
+      }, 1000);
     }
   }
 
@@ -53,7 +56,11 @@ export class TeamChartComponent implements OnInit {
 
   reset() {
     if (confirm(`Are you sure you want to start over?`)) {
-      this.resetTeamEmitter.emit(true);
+      this.removeAllPlayers = true;
+      setTimeout(() => {
+        this.resetTeamEmitter.emit(true);
+        this.removeAllPlayers = false;
+      }, 1000);
     }
   }
 }
