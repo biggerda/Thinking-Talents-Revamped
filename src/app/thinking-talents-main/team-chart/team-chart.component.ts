@@ -23,6 +23,9 @@ export class TeamChartComponent {
   @Output()
   resetTeamEmitter = new EventEmitter<boolean>();
 
+  @Output()
+  generateTeamMap = new EventEmitter();
+
   @Input()
   teammates: Player[];
 
@@ -50,8 +53,8 @@ export class TeamChartComponent {
     }
   }
 
-  generateTeamMap() {
-
+  generateMap() {
+    this.generateTeamMap.emit();
   }
 
   reset() {

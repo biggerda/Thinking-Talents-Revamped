@@ -3,6 +3,7 @@ import {skillsData} from '../../entities/skillsData';
 import {Skill} from '../../entities/Skill';
 import {Player} from '../../entities/Player';
 import {UpdatedPlayerData} from '../../entities/UpdatedPlayerData';
+import {Team} from '../../entities/Team';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -17,7 +18,8 @@ export class ThinkingTalentsMainComponent implements OnInit {
   updatedTeammate: UpdatedPlayerData;
   displayedTeammate: Player;
   disableTeamNameInput: boolean;
-
+  showMap = false;
+  teamData: Team;
 
   randomSkill: Skill = this.skillsDataTesting[5];
   randomSkill2: Skill = this.skillsDataTesting[10];
@@ -80,6 +82,14 @@ export class ThinkingTalentsMainComponent implements OnInit {
 
   updateTeam(team: Player[]) {
     this.teammates = team;
+  }
+
+  generateMap() {
+    this.teamData = {
+      players: this.teammates
+    };
+
+    this.showMap = true;
   }
 
   addTeammate() {

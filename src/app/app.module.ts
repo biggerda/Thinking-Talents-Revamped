@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { TeamMapComponent } from './thinking-talents-main/team-map/team-map.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HeaderComponent,
     SkillsPopupComponent,
     TeamChartComponent,
-    ThinkingTalentsMainComponent
+    ThinkingTalentsMainComponent,
+    TeamMapComponent
   ],
   imports: [
     BrowserModule,
