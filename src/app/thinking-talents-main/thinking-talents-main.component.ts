@@ -19,7 +19,6 @@ export class ThinkingTalentsMainComponent implements OnInit {
   displayedTeammate: Player;
   disableTeamNameInput: boolean;
   showMap = false;
-  teamData: Team;
 
   randomSkill: Skill = this.skillsDataTesting[5];
   randomSkill2: Skill = this.skillsDataTesting[10];
@@ -65,6 +64,13 @@ export class ThinkingTalentsMainComponent implements OnInit {
       isDisplayed: true
     },
   ];
+
+  teamData: Team = {
+    players: this.teammates,
+    team_name: 'My Team Name',
+    teampreferences: this.teammates.map(it => it.talentPref),
+    teamblindspots: this.teammates.map(it => it.blindSpot)
+  };
 
   constructor() {
   }
