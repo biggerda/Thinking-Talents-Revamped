@@ -32,8 +32,9 @@
 </div>
 
 <app-team-map
-  [team]="teamData">
-<!--  *ngIf="showMap">-->
+  [team]="teamData"
+  [mapData]="mapData"
+  *ngIf="showMap">
 </app-team-map>
 
 <div id="screen-dimmer" *ngIf="toggleSkills||toggleDisplayTeammate"></div>

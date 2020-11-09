@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Team} from '../../../entities/Team';
-import {Skill} from '../../../entities/Skill';
-import {skillsData} from '../../../entities/skillsData';
+import {MapSkill} from '../../../entities/MapSkill';
 
 @Component({
   selector: 'app-team-map',
@@ -10,20 +9,25 @@ import {skillsData} from '../../../entities/skillsData';
 })
 export class TeamMapComponent implements OnInit {
 
-  skills: Skill[] = skillsData;
-
   @Input()
   team: Team;
+
+  @Input()
+  mapData: MapSkill[];
 
   constructor() {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log(this.mapData);
   }
 
   isChecked(skillName: string) {
-    const index = this.skills.map((skill) => skill.name).indexOf(skillName);
-    return index >= 0 ? this.skills[index].checked : false;
+    const checked = this.mapData
+      .filter(skill => skill.name === skillName)
+      .map(skill => skill.checked);
+    console.log(`isChecked: ${skillName}: ${checked}`);
+    return checked;
   }
 
   isStuffed(): boolean {
@@ -31,8 +35,11 @@ export class TeamMapComponent implements OnInit {
   }
 
   getNames(skillName: string) {
-    const index = this.skills.map((skill) => skill.name).indexOf(skillName);
-    return this.skills[index].name;
+    const names = this.mapData
+      .filter(skill => skill.name === skillName)
+      .map(skill => skill.playerNames);
+    console.log(`Get Names: ${skillName}: ${names}`);
+    return names;
   }
 
 }

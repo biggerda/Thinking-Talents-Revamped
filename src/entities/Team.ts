@@ -1,9 +1,10 @@
 import {Player} from './Player';
+import {MapSkill} from './MapSkill';
 
 export interface Team {
   players: Player[];
   stuffed?: boolean;
-  team_name?: string;
-  teampreferences?: string[];
-  teamblindspots?: string[];
+  teamName?: string;
+  teamPreferences?: string[];
+  teamBlindspots?: string[];
 }

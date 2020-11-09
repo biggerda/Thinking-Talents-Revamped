@@ -4,6 +4,9 @@ import {Skill} from '../../entities/Skill';
 import {Player} from '../../entities/Player';
 import {UpdatedPlayerData} from '../../entities/UpdatedPlayerData';
 import {Team} from '../../entities/Team';
+import {MapSkill} from '../../entities/MapSkill';
+import {mapSkillsData} from '../../entities/mapSkillsData';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -11,7 +14,8 @@ import {Team} from '../../entities/Team';
   styleUrls: ['./thinking-talents-main.component.scss']
 })
 export class ThinkingTalentsMainComponent implements OnInit {
-  skillsDataTesting: Skill[] = skillsData;
+  talentData: Skill[] = skillsData;
+  mapData: MapSkill[] = mapSkillsData;
   toggleSkills = false;
   toggleDisplayTeammate = false;
   addNewTeammate = false;
@@ -20,14 +24,15 @@ export class ThinkingTalentsMainComponent implements OnInit {
   disableTeamNameInput: boolean;
   showMap = false;
 
-  randomSkill: Skill = this.skillsDataTesting[5];
-  randomSkill2: Skill = this.skillsDataTesting[10];
-  randomSkill3: Skill = this.skillsDataTesting[15];
-  randomSkill4: Skill = this.skillsDataTesting[7];
-  randomSkill5: Skill = this.skillsDataTesting[12];
-  randomSkill6: Skill = this.skillsDataTesting[17];
-  randomSkill7: Skill = this.skillsDataTesting[20];
-  randomSkill8: Skill = this.skillsDataTesting[26];
+  randomSkill: Skill = this.talentData[5];
+  randomSkill2: Skill = this.talentData[10];
+  randomSkill3: Skill = this.talentData[15];
+  randomSkill4: Skill = this.talentData[7];
+  randomSkill5: Skill = this.talentData[12];
+  randomSkill6: Skill = this.talentData[17];
+  randomSkill7: Skill = this.talentData[20];
+  randomSkill8: Skill = this.talentData[26];
+  teamData: Team;
   teammates: Player[] = [
     {
       name: 'Devin',
@@ -65,17 +70,11 @@ export class ThinkingTalentsMainComponent implements OnInit {
     },
   ];
 
-  teamData: Team = {
-    players: this.teammates,
-    team_name: 'My Team Name',
-    teampreferences: this.teammates.map(it => it.talentPref),
-    teamblindspots: this.teammates.map(it => it.blindSpot)
-  };
-
   constructor() {
   }
 
   ngOnInit(): void {
+
   }
 
   toggleSkillsPopup(activated: boolean) {
@@ -91,8 +90,23 @@ export class ThinkingTalentsMainComponent implements OnInit {
   }
 
   generateMap() {
+    this.teammates.forEach(player => {
+      const playerName = player.name;
+      const playerTalentList = player.talents.map(talent => talent.name);
+
+      this.mapData.forEach(talent => {
+        if (playerTalentList.includes(talent.name)) {
+          talent.playerNames.push(playerName);
+          talent.checked = true;
+        }
+      });
+    });
+
     this.teamData = {
-      players: this.teammates
+      players: this.teammates,
+      teamName: 'Green Team',
+      teamPreferences: this.teammates.map(it => it.talentPref),
+      teamBlindspots: this.teammates.map(it => it.blindSpot),
     };
 
     this.showMap = true;
