@@ -50,13 +50,18 @@
 @include motion-ui-animations;
 
 @font-face {
-  font-family: 'Swiss Black';
-  src: url(../../../assets/fonts/swiss-721-black-bt-59337c07f0848.ttf);
+  font-family: 'Stencil Std';
+  src: url(../../../assets/fonts/stencil-std.ttf);
 }
 
 @font-face {
-  font-family: 'Stencil Std';
-  src: url(../../../assets/fonts/stencil-std.ttf);
+  font-family: 'Archivo Black';
+  src: url(../../../assets/fonts/ArchivoBlack-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Nimbus';
+  src: url(../../../assets/fonts/nimbus.otf);
 }
 
 .text-archivo {
@@ -69,7 +74,7 @@ h5.quad-desc {
 }
 
 h5 {
-  font-family: 'Swiss Black';
+  font-family: "Nimbus";
 }
 
 .ttheading {
@@ -89,7 +94,7 @@ h1 {
   font-size: 30pt;
   font-weight: bold;
   line-height: 110%;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .text-bold {
@@ -172,14 +177,6 @@ h1 {
   position: relative;
 }
 
-.central-top-puzzle {
-  right: 25px;
-}
-
-.central-bottom-puzzle {
-
-}
-
 div.name {
   white-space: nowrap;
   position: absolute;
@@ -230,13 +227,22 @@ html {
   border-right:  1px solid black;
   border-left:   1px solid black;
   padding: 0 0 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .central-border-bottom {
+  height: 21rem;
   border-right:  1px solid black;
   border-left:   1px solid black;
   border-bottom: 1px solid black;
-  padding: 20px 0 60px;
+  padding: 20px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .central-border-sides {
@@ -328,7 +334,7 @@ h4 {
 }
 
 .small-5 {
-  width: 41%;
+  width: 41.37%;
 }
 
 .small-2 {
@@ -369,4 +375,9 @@ h4 {
 .move-down {
   position: relative;
   top: 50px;
+}
+
+.flexem {
+  display: flex;
+  justify-content: space-between;
 }
