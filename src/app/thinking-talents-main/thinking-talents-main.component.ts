@@ -6,7 +6,6 @@ import {UpdatedPlayerData} from '../../entities/UpdatedPlayerData';
 import {Team} from '../../entities/Team';
 import {MapSkill} from '../../entities/MapSkill';
 import {mapSkillsData} from '../../entities/mapSkillsData';
-import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -21,7 +20,8 @@ export class ThinkingTalentsMainComponent implements OnInit {
   addNewTeammate = false;
   updatedTeammate: UpdatedPlayerData;
   displayedTeammate: Player;
-  disableTeamNameInput: boolean;
+  disableTeamNameInput = true;
+  teamName = '';
   showMap = false;
 
   randomSkill: Skill = this.talentData[5];
@@ -104,7 +104,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
 
     this.teamData = {
       players: this.teammates,
-      teamName: 'Green Team',
+      teamName: this.teamName,
       teamPreferences: this.teammates.map(it => it.talentPref),
       teamBlindspots: this.teammates.map(it => it.blindSpot),
     };
@@ -144,6 +144,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
   }
 
   toggleTeamNameInput() {
-    console.log(this.disableTeamNameInput);
+    this.disableTeamNameInput = !this.disableTeamNameInput;
+    this.teamName = '';
   }
 }

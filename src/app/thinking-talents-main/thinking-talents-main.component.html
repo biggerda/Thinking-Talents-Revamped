@@ -4,14 +4,16 @@
   <mat-checkbox
     id="team-name-checkbox"
     type="checkbox"
-    [checked]="disableTeamNameInput"
     (change)="toggleTeamNameInput()">
     Team Name?
   </mat-checkbox>
   <input
+    matInput
     id="team-name-input"
     type="text"
-    [disabled]="disableTeamNameInput">
+    [(ngModel)]="teamName"
+    placeholder="Team Name"
+    *ngIf="!disableTeamNameInput">
 
   <app-team-chart
     (addPlayerEmitter)="addTeammate()"
