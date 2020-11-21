@@ -18,11 +18,10 @@ export class TeamMapComponent {
   mapData: MapSkill[];
 
   isChecked(skillName: string) {
-    const checked = this.mapData
+    return this.mapData
       .filter(skill => skill.name === skillName)
       .map(skill => skill.checked);
-    console.log(`isChecked: ${skillName}: ${checked}`);
-    return checked;
+    // console.log(`isChecked: ${skillName}: ${checked}`);
   }
 
   isStuffed(): boolean {
@@ -34,7 +33,7 @@ export class TeamMapComponent {
       .filter(skill => skill.name === skillName)
       .map(skill => this.names = skill.playerNames);
 
-    console.log(`Get Names: ${skillName}: ${this.names}`);
+    // console.log(`Get Names: ${skillName}: ${this.names}`);
     return this.names;
   }
 

@@ -4,7 +4,8 @@
   <mat-checkbox
     id="team-name-checkbox"
     type="checkbox"
-    (change)="toggleTeamNameInput()">
+    (change)="toggleTeamNameInput()"
+    #teamNameCheckbox>
     Team Name?
   </mat-checkbox>
   <input
@@ -19,6 +20,7 @@
     (addPlayerEmitter)="addTeammate()"
     (viewPlayerEmitter)="viewTeammate($event)"
     (updatePlayerEmitter)="updateTeammate($event)"
+    (removeTeammateFromChartEmitter)="removeTeammateFromChart($event)"
     (updateTeamEmitter)="updateTeam($event)"
     (generateTeamMap)="generateMap()"
     (resetTeamEmitter)="resetTeam()"

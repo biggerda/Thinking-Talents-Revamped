@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {skillsData} from '../../entities/skillsData';
 import {Skill} from '../../entities/Skill';
 import {Player} from '../../entities/Player';
@@ -23,6 +23,8 @@ export class ThinkingTalentsMainComponent implements OnInit {
   disableTeamNameInput = true;
   teamName = '';
   showMap = false;
+
+  @ViewChild('teamNameCheckbox') teamNameCheckbox: ElementRef;
 
   randomSkill: Skill = this.talentData[5];
   randomSkill2: Skill = this.talentData[10];
@@ -95,7 +97,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
       const playerTalentList = player.talents.map(talent => talent.name);
 
       this.mapData.forEach(talent => {
-        if (playerTalentList.includes(talent.name)) {
+        if (playerTalentList.includes(talent.name) && !talent.playerNames.includes(playerName)) {
           talent.playerNames.push(playerName);
           talent.checked = true;
         }
@@ -123,17 +125,50 @@ export class ThinkingTalentsMainComponent implements OnInit {
   }
 
   updateTeammate(playerToUpdate: UpdatedPlayerData) {
+    this.showMap = false;
     this.addNewTeammate = false;
     this.updatedTeammate = playerToUpdate;
     this.toggleSkillsPopup(true);
   }
 
   addTeammatetoChart(teammate: Player) {
+    this.showMap = false;
     this.teammates.push(teammate);
   }
 
+  removeTeammateFromChart(index: number) {
+    this.showMap = false;
+    const removedPlayer = this.teammates[index];
+    const removedTalents = removedPlayer.talents.map(talent => talent.name);
+
+    this.mapData.forEach(talent => {
+      if (removedTalents.includes(talent.name)) {
+        const removedIndexOfTalent = talent.playerNames.indexOf(removedPlayer.name);
+        talent.playerNames.splice(removedIndexOfTalent, 1);
+
+        if (talent.playerNames.length === 0) {
+          talent.checked = false;
+        }
+      }
+    });
+
+    this.teammates.splice(index, 1);
+  }
+
   resetTeam() {
+    if (this.disableTeamNameInput === false) {
+      // tslint:disable-next-line:no-string-literal
+      this.teamNameCheckbox['checked'] = false;
+      this.toggleTeamNameInput();
+    }
+
     this.teammates = [];
+    this.mapData.forEach(talent => {
+      talent.playerNames = [];
+      talent.checked = false;
+    });
+
+    this.showMap = false;
   }
 
   logCurrentTeam() {
@@ -144,6 +179,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
   }
 
   toggleTeamNameInput() {
+    this.showMap = false;
     this.disableTeamNameInput = !this.disableTeamNameInput;
     this.teamName = '';
   }

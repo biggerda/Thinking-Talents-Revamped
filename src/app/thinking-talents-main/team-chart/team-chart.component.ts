@@ -18,6 +18,9 @@ export class TeamChartComponent {
   updatePlayerEmitter = new EventEmitter<UpdatedPlayerData>();
 
   @Output()
+  removeTeammateFromChartEmitter = new EventEmitter<number>();
+
+  @Output()
   updateTeamEmitter = new EventEmitter<Player[]>();
 
   @Output()
@@ -47,6 +50,7 @@ export class TeamChartComponent {
     if (confirm(`Are you sure you want to remove values for ${playerName}?`)) {
       this.teammates[index].isDisplayed = false;
       setTimeout(() => {
+        this.removeTeammateFromChartEmitter.emit(index);
         this.teammates = this.teammates.filter(teammate => teammate.name !== playerName);
         this.updateTeamEmitter.emit(this.teammates);
       }, 1000);
