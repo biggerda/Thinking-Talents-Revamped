@@ -33,12 +33,12 @@
     [isAddingTeammate]="addNewTeammate"
     *ngIf="toggleSkills">
   </app-skills-popup>
-
-  <app-team-map
-    [team]="teamData"
-    [mapData]="mapData"
-    *ngIf="showMap">
-  </app-team-map>
-
-  <div id="screen-dimmer" *ngIf="toggleSkills||toggleDisplayTeammate"></div>
 </div>
+
+<app-team-map
+  [team]="teamData"
+  [mapData]="mapData"
+  *ngIf="showMap">
+</app-team-map>
+
+<div id="screen-dimmer" *ngIf="toggleSkills||toggleDisplayTeammate"></div>
