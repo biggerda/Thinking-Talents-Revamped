@@ -6,6 +6,10 @@
     margin-left: .3rem;
   }
 
+  .main-buttons:disabled {
+    background: #8a8a8a;
+  }
+
   .reset-button {
     background-color: red;
   }

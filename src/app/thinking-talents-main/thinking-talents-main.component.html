@@ -1,20 +1,19 @@
 <div id="thinking-talents-main">
   <h1>Team Map</h1>
 
-  <mat-checkbox
-    id="team-name-checkbox"
-    type="checkbox"
-    (change)="toggleTeamNameInput()"
-    #teamNameCheckbox>
-    Team Name?
-  </mat-checkbox>
-  <input
-    matInput
-    id="team-name-input"
-    type="text"
-    [(ngModel)]="teamName"
-    placeholder="Team Name"
-    *ngIf="!disableTeamNameInput">
+  <mat-form-field id="team-input-field">
+    <mat-label>Choose a team name</mat-label>
+    <input matInput
+           id="team-name-input"
+           type="text"
+           placeholder="Ex. Team Name"
+           (change)="changeTeamName()"
+           [(ngModel)]="teamName"/>
+    <button mat-button *ngIf="teamName" matSuffix mat-icon-button aria-label="Clear"
+            (click)="teamName=''; changeTeamName()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
   <app-team-chart
     (addPlayerEmitter)="addTeammate()"
@@ -26,6 +25,7 @@
     (resetTeamEmitter)="resetTeam()"
     [teammates]="teammates">
   </app-team-chart>
+
   <app-skills-popup
     (skillsPopupEmitter)="toggleSkillsPopup($event)"
     (addTeammatetoChartEmitter)="addTeammatetoChart($event)"
@@ -33,12 +33,12 @@
     [isAddingTeammate]="addNewTeammate"
     *ngIf="toggleSkills">
   </app-skills-popup>
+
+  <app-team-map
+    [team]="teamData"
+    [mapData]="mapData"
+    *ngIf="showMap">
+  </app-team-map>
+
+  <div id="screen-dimmer" *ngIf="toggleSkills||toggleDisplayTeammate"></div>
 </div>
-
-<app-team-map
-  [team]="teamData"
-  [mapData]="mapData"
-  *ngIf="showMap">
-</app-team-map>
-
-<div id="screen-dimmer" *ngIf="toggleSkills||toggleDisplayTeammate"></div>

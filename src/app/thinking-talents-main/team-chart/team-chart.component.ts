@@ -38,6 +38,11 @@ export class TeamChartComponent {
   constructor() {
   }
 
+
+  get teammatesExist(): boolean {
+    return this.teammates.length > 0;
+  }
+
   addPerson() {
     this.addPlayerEmitter.emit(true);
   }

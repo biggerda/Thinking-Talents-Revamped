@@ -76,7 +76,6 @@ export class ThinkingTalentsMainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   toggleSkillsPopup(activated: boolean) {
@@ -182,5 +181,9 @@ export class ThinkingTalentsMainComponent implements OnInit {
     this.showMap = false;
     this.disableTeamNameInput = !this.disableTeamNameInput;
     this.teamName = '';
+  }
+
+  changeTeamName() {
+    this.showMap = false;
   }
 }
