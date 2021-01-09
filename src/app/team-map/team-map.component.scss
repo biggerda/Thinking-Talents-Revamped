@@ -1,7 +1,7 @@
 @import 'settings';
-@import "~foundation-sites/assets/foundation";
-@import './node_modules/motion-ui/motion-ui';
-@import './node_modules/foundation-sites/scss/components/top-bar';
+@import "node_modules/foundation-sites/assets/foundation";
+@import 'node_modules/motion-ui/motion-ui';
+@import 'node_modules/foundation-sites/scss/components/top-bar';
 
 @include foundation-global-styles;
 @include foundation-grid;
@@ -51,17 +51,17 @@
 
 @font-face {
   font-family: 'Stencil Std';
-  src: url(../../../assets/fonts/stencil-std.ttf);
+  src: url(../../assets/fonts/stencil-std.ttf);
 }
 
 @font-face {
   font-family: 'Archivo Black';
-  src: url(../../../assets/fonts/ArchivoBlack-Regular.ttf);
+  src: url(../../assets/fonts/ArchivoBlack-Regular.ttf);
 }
 
 @font-face {
   font-family: 'Nimbus';
-  src: url(../../../assets/fonts/nimbus.otf);
+  src: url(../../assets/fonts/nimbus.otf);
 }
 
 .text-archivo {
@@ -190,7 +190,7 @@ div.name h4 {
 }
 
 #teamMap{
-  background: url('../../../assets/images/noWayOutWatermark.png');
+  background: url('../../assets/images/noWayOutWatermark.png');
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: center;
@@ -270,7 +270,7 @@ html {
 }
 
 .wrapper {
-  margin: auto;
+  margin: 8rem auto;
   height: 1080px;
   width: 1920px;
 }

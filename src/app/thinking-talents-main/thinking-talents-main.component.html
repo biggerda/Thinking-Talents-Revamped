@@ -1,12 +1,11 @@
 <div id="thinking-talents-main">
-  <h1>Team Map</h1>
+  <h1>Thinking Talents Chart</h1>
 
-  <mat-form-field id="team-input-field">
-    <mat-label>Choose a team name</mat-label>
+  <mat-form-field id="team-input-field" appearance="outline">
+    <mat-label>Team Name</mat-label>
     <input matInput
            id="team-name-input"
            type="text"
-           placeholder="Ex. Team Name"
            (change)="changeTeamName()"
            [(ngModel)]="teamName"/>
     <button mat-button *ngIf="teamName" matSuffix mat-icon-button aria-label="Clear"
@@ -34,11 +33,5 @@
     *ngIf="toggleSkills">
   </app-skills-popup>
 </div>
-
-<app-team-map
-  [team]="teamData"
-  [mapData]="mapData"
-  *ngIf="showMap">
-</app-team-map>
 
 <div id="screen-dimmer" *ngIf="toggleSkills||toggleDisplayTeammate"></div>

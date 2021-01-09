@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Player} from '../../../entities/Player';
 import {UpdatedPlayerData} from '../../../entities/UpdatedPlayerData';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-team-chart',
@@ -35,7 +36,7 @@ export class TeamChartComponent {
   removePlayer = false;
   removeAllPlayers = false;
 
-  constructor() {
+  constructor(private _route: ActivatedRoute) {
   }
 
 

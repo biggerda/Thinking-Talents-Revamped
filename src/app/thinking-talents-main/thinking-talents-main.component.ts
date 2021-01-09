@@ -6,6 +6,7 @@ import {UpdatedPlayerData} from '../../entities/UpdatedPlayerData';
 import {Team} from '../../entities/Team';
 import {MapSkill} from '../../entities/MapSkill';
 import {mapSkillsData} from '../../entities/mapSkillsData';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -72,7 +73,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
     },
   ];
 
-  constructor() {
+  constructor(private _route: Router) {
   }
 
   ngOnInit(): void {
@@ -110,7 +111,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
       teamBlindspots: this.teammates.map(it => it.blindSpot),
     };
 
-    this.showMap = true;
+    this._route.navigate(['map'], { queryParams: { teamData: this.teamData, mapData: this.mapData }});
   }
 
   addTeammate() {
