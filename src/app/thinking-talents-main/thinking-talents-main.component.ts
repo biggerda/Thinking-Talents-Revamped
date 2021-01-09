@@ -7,6 +7,7 @@ import {Team} from '../../entities/Team';
 import {MapSkill} from '../../entities/MapSkill';
 import {mapSkillsData} from '../../entities/mapSkillsData';
 import {Router} from '@angular/router';
+import {MapGenerationService} from '../services/map-generation.service';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -73,7 +74,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
     },
   ];
 
-  constructor(private _route: Router) {
+  constructor(private _route: Router, private _mapGen: MapGenerationService) {
   }
 
   ngOnInit(): void {
@@ -111,8 +112,10 @@ export class ThinkingTalentsMainComponent implements OnInit {
       teamBlindspots: this.teammates.map(it => it.blindSpot),
     };
 
-    this._route.navigate(['map'], { queryParams: { teamData: this.teamData, mapData: this.mapData }});
-  }
+    this._mapGen.transferData(this.teamData, this.mapData);
+
+    this._route.navigate(['map']);
+   }
 
   addTeammate() {
     this.addNewTeammate = true;

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Team} from '../../entities/Team';
 import {MapSkill} from '../../entities/MapSkill';
 import {ActivatedRoute} from '@angular/router';
+import {MapGenerationService} from '../services/map-generation.service';
 
 @Component({
   selector: 'app-team-map',
@@ -14,15 +15,12 @@ export class TeamMapComponent implements OnInit {
   team: Team;
   mapData: MapSkill[];
 
-  constructor(private _route: ActivatedRoute) {
+  constructor(private _route: ActivatedRoute, private _mapGen: MapGenerationService) {
   }
 
   ngOnInit() {
-    this._route.queryParams.subscribe( params => {
-      this.team = params.teamData;
-      this.mapData = params.mapData;
-      console.log('team size: ', this.team.players.length);
-    });
+    this.team = this._mapGen.teamData;
+    this.mapData = this._mapGen.mapData;
   }
 
   isChecked(skillName: string) {
