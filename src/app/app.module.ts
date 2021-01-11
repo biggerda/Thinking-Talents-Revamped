@@ -15,6 +15,7 @@ import { TeamMapComponent } from './team-map/team-map.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { TeamAnalysisComponent } from './team-analysis/team-analysis.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SkillsPopupComponent,
     TeamChartComponent,
     ThinkingTalentsMainComponent,
-    TeamMapComponent
+    TeamMapComponent,
+    TeamAnalysisComponent
   ],
   imports: [
     BrowserModule,
