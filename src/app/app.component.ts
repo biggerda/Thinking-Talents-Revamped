@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Thinking Talents | No Way Out';
+
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
+  }
 }

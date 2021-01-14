@@ -33,6 +33,9 @@ export class TeamChartComponent {
   @Output()
   generateTeamAnalysis = new EventEmitter();
 
+  @Output()
+  generateSampleTeam = new EventEmitter();
+
   @Input()
   teammates: Player[];
 
@@ -72,6 +75,10 @@ export class TeamChartComponent {
 
   generateAnalysis() {
     this.generateTeamAnalysis.emit();
+  }
+
+  sampleTeam() {
+    this.generateSampleTeam.emit();
   }
 
   reset() {

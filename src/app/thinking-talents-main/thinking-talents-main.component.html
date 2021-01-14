@@ -8,7 +8,7 @@
            type="text"
            (change)="changeTeamName()"
            [(ngModel)]="teamName"/>
-    <button mat-button *ngIf="teamName" matSuffix mat-icon-button aria-label="Clear"
+    <button class="close-button" mat-button *ngIf="teamName" matSuffix mat-icon-button aria-label="Clear"
             (click)="teamName=''; changeTeamName()">
       <mat-icon>close</mat-icon>
     </button>
@@ -22,6 +22,7 @@
     (updateTeamEmitter)="updateTeam($event)"
     (generateTeamMap)="generateMap()"
     (generateTeamAnalysis)="generateAnalysis()"
+    (generateSampleTeam)="loadSampleTeam()"
     (resetTeamEmitter)="resetTeam()"
     [teammates]="teammates">
   </app-team-chart>

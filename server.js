@@ -1,12 +1,23 @@
 // Get dependencies
 const express = require('express');
+const cors = require('cors')
+const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
 const app = express();
+app.use(cors())
+
+const teamMock = JSON.parse(fs.readFileSync(`${__dirname}/team.json`, 'utf8'));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist/updated-thinking-talents')));
+
+// Routes
+app.get('/team', (req, res) => {
+  console.log('Mocked Team: ', teamMock);
+  res.send(teamMock);
+});
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

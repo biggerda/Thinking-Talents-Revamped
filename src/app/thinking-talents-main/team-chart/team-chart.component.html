@@ -3,6 +3,7 @@
   <button mat-raised-button class="main-buttons generate-button" [disabled]="!teammatesExist" (click)="generateMap()">Generate team map</button>
   <button mat-raised-button class="main-buttons generate-button" [disabled]="!teammatesExist" (click)="generateAnalysis()">Generate team analysis</button>
   <button mat-raised-button class="main-buttons reset-button" [disabled]="!teammatesExist" (click)="reset()">New team map</button>
+  <button mat-raised-button class="main-buttons load-button" (click)="sampleTeam()">Load sample team</button>
 
   <table id="team-chart__table">
     <colgroup>
