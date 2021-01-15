@@ -9,7 +9,7 @@ import {Player} from '../../entities/Player';
 })
 export class LoadTeamService {
 
-  private teamUrl = 'http://127.0.0.1:8080/team';  // URL to web api
+  private teamUrl = 'http://127.0.0.1:8080/api/team';  // URL to web api
 
   constructor(private readonly _http: HttpClient) {
   }

@@ -6,20 +6,31 @@ const path = require('path');
 const http = require('http');
 
 const app = express();
-app.use(cors())
-
+const teamRouter = express.Router();
 const teamMock = JSON.parse(fs.readFileSync(`${__dirname}/team.json`, 'utf8'));
+
+// Enable CORS
+app.use(cors())
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist/updated-thinking-talents')));
 
+// Router Setup
+teamRouter.route('/team')
+  .get((req, res) => {
+    res.json(teamMock);
+  });
+
+app.use('/api', teamRouter);
+
 // Routes
-app.get('/team', (req, res) => {
-  console.log('Mocked Team: ', teamMock);
-  res.send(teamMock);
-});
+// app.get('/team', (req, res) => {
+//   console.log('Mocked Team: ', teamMock);
+//   res.send(teamMock);
+// });
 
 // Catch all other routes and return the index file
+// TODO: Create 'page not found' for this scenario
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/updated-thinking-talents/index.html'));
 });

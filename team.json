@@ -82,5 +82,47 @@
     "talentPref": "Facts vs. Feelings (A/R)",
     "blindSpot": "Entrepreneur (I/P)",
     "isDisplayed": true
+  },
+  {
+    "name": "Pablo",
+    "talents": [
+      {
+        "name": "Creating Intimacy",
+        "description": "Encourages deepening of relationships; comfortable with intimacy.",
+        "checked": false,
+        "type": "relational"
+      },
+      {
+        "name": "Focusing",
+        "description": "Capacity to concentrate on a goal for a long period of time",
+        "checked": false,
+        "type": "procedural"
+      },
+      {
+        "name": "Making It Happen",
+        "description": "Impatient for action rather than contemplation.",
+        "checked": false,
+        "type": "procedural"
+      },
+      {
+        "name": "Peace-making",
+        "description": "Looks for areas of agreement; holds conflict to a minimum.",
+        "checked": false,
+        "type": "relational"
+      },
+      {
+        "name": "Thinking Logically",
+        "description": "Exposes clumsy thinking; sees patterns in data.",
+        "checked": false,
+        "type": "analytic"
+      }
+    ],
+    "aTalents": 1,
+    "iTalents": 0,
+    "rTalents": 2,
+    "pTalents": 2,
+    "talentPref": "Limbic (R/P) / Right-Brained",
+    "blindSpot": "Innovative",
+    "isDisplayed": true
   }
 ]
