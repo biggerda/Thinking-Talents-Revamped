@@ -10,11 +10,26 @@ const http = require('http');
 // Connect Database
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
-const mongoose = require('mongoose');
-const uri_string = process.env.MONGODB_URI || 'mongodb://localhost/thinking-talents';
-const db = mongoose.connect(
-  uri_string,
-  {useNewUrlParser: true, useUnifiedTopology: true})
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://dbigz:iDtd2rh5DBpj7G@maincluster.6gn9e.mongodb.net/thinking-talents?retryWrites=true&w=majority";
+// const uri = process.env.MONGODB_URI || "mongodb+srv://dbigz:iDtd2rh5DBpj7G@maincluster.6gn9e.mongodb.net/thinking-talents?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("thinking-talents").collection("teams");
+  // perform actions on the collection object
+  client.close();
+});
+
+
+
+
+
+
+// const mongoose = require('mongoose');
+// const uri_string = process.env.MONGODB_URI || 'mongodb://localhost/thinking-talents';
+// const db = mongoose.connect(
+//   uri_string,
+//   {useNewUrlParser: true, useUnifiedTopology: true})
 const Teams = require('./src/models/teamModel')
 
 
