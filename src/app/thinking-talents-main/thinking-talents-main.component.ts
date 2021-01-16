@@ -9,7 +9,7 @@ import {mapSkillsData} from '../../entities/mapSkillsData';
 import {Router} from '@angular/router';
 import {MapGenerationService} from '../services/map-generation.service';
 import {LoadTeamService} from '../services/load-team.service';
-import {filter, map, take, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -60,7 +60,6 @@ export class ThinkingTalentsMainComponent implements OnInit {
 
   loadSampleTeam() {
     this._loadTeam.getSampleTeams().pipe(
-      // map(team => console.log(team))
       map(team => team.players.forEach(it => this.teammates.push(it)))
     ).subscribe();
   }
