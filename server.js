@@ -1,24 +1,42 @@
 // Get dependencies
 const express = require('express');
-const cors = require('cors')
-const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
+// Mocked Data
+// const fs = require('fs');
+// const teamMock = JSON.parse(fs.readFileSync(`${__dirname}/team.json`, 'utf8'));
+
+// Connect Database
+const mongoose = require('mongoose');
+const db = mongoose.connect(
+  'mongodb://localhost/thinking-talents',
+  {useNewUrlParser: true, useUnifiedTopology: true})
+const Teams = require('./src/models/teamModel')
+
+
+// Start Application
 const app = express();
 const teamRouter = express.Router();
-const teamMock = JSON.parse(fs.readFileSync(`${__dirname}/team.json`, 'utf8'));
 
 // Enable CORS
+const cors = require('cors');
 app.use(cors())
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist/updated-thinking-talents')));
 
 // Router Setup
-teamRouter.route('/team')
+teamRouter.route('/teams')
   .get((req, res) => {
-    res.json(teamMock);
+    Teams.findById('6001ff268f860db83b6c6f7b',(err, sampleTeam) => {
+      if (err) {
+        console.log(`ERR - GET /teams - findById ${err}`);
+        return res.send(err);
+      }
+
+      return res.json(sampleTeam);
+    })
   });
 
 app.use('/api', teamRouter);
