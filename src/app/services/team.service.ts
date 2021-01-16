@@ -6,7 +6,7 @@ import {Team} from '../../entities/Team';
 @Injectable({
   providedIn: 'root'
 })
-export class LoadTeamService {
+export class TeamService {
 
   private teamUrl = 'http://127.0.0.1:8080/api/teams';  // URL to web api
 

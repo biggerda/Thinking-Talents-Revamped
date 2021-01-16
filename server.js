@@ -8,9 +8,12 @@ const http = require('http');
 // const teamMock = JSON.parse(fs.readFileSync(`${__dirname}/team.json`, 'utf8'));
 
 // Connect Database
+// Here we find an appropriate database to connect to, defaulting to
+// localhost if we don't find one.
 const mongoose = require('mongoose');
+const uri_string = process.env.MONGODB_URI || 'mongodb://localhost/thinking-talents';
 const db = mongoose.connect(
-  'mongodb://localhost/thinking-talents',
+  uri_string,
   {useNewUrlParser: true, useUnifiedTopology: true})
 const Teams = require('./src/models/teamModel')
 

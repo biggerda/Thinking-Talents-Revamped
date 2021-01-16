@@ -8,7 +8,7 @@ import {MapSkill} from '../../entities/MapSkill';
 import {mapSkillsData} from '../../entities/mapSkillsData';
 import {Router} from '@angular/router';
 import {MapGenerationService} from '../services/map-generation.service';
-import {LoadTeamService} from '../services/load-team.service';
+import {TeamService} from '../services/team.service';
 import {map} from 'rxjs/operators';
 
 @Component({
@@ -36,7 +36,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
   constructor(
     private _route: Router,
     private _mapGen: MapGenerationService,
-    private _loadTeam: LoadTeamService) {
+    private _teamService: TeamService) {
   }
 
   ngOnInit(): void {
@@ -59,7 +59,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
   }
 
   loadSampleTeam() {
-    this._loadTeam.getSampleTeams().pipe(
+    this._teamService.getSampleTeams().pipe(
       map(team => team.players.forEach(it => this.teammates.push(it)))
     ).subscribe();
   }
