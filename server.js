@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
-const cors = require('cors');
 
 // Mocked Data
 // const fs = require('fs');
@@ -21,6 +20,7 @@ const app = express();
 const teamRouter = express.Router();
 
 // Enable CORS
+const cors = require('cors');
 app.use(cors())
 
 // Point static path to dist
