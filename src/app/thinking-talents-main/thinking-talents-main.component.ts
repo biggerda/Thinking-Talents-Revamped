@@ -64,6 +64,11 @@ export class ThinkingTalentsMainComponent implements OnInit {
     ).subscribe();
   }
 
+  saveCurrentTeam() {
+    this.syncData();
+    this._teamService.saveTeam(this.teamData).subscribe();
+  }
+
   syncData() {
     this.teammates.forEach(player => {
       const playerName = player.name;

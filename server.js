@@ -42,17 +42,23 @@ client.connect((err, client) => {
 // const db = mongoose.connect(
 //   uri_string,
 //   {useNewUrlParser: true, useUnifiedTopology: true})
-const Teams = require('./src/models/teamModel')
+// const Teams = require('./src/models/teamModel')
 
 
 // Start Application
 const app = express();
 const teamRouter = express.Router();
+const bodyParser = require("body-parser");
 
 // Enable CORS
 const cors = require('cors');
-const {ObjectId} = require("bson");
 app.use(cors())
+
+// Use Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist/updated-thinking-talents')));
@@ -61,6 +67,28 @@ app.use(express.static(path.join(__dirname, 'dist/updated-thinking-talents')));
 teamRouter.route('/sample-team')
   .get((req, res) => {
     database.find("60038ec44d8074c7415bd82c")
+      .toArray()
+      .then(results => {
+        console.log(results);
+        res.status(200).send(results[0]);
+      });
+  });
+
+teamRouter.route('/save')
+  .post((req, res) => {
+    // write to database
+    database.insertOne(req.body)
+      .then(_ => {
+        res.status(201).json('saved');
+      })
+      .catch(err => {
+        if (err) throw err;
+      });
+  });
+
+teamRouter.route('/team/:teamid')
+  .get((req, res) => {
+    database.find(req.params.teamid)
       .toArray()
       .then(results => {
         console.log(results);
