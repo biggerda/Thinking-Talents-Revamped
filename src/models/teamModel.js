@@ -21,6 +21,14 @@ const teamModel = new Schema(
         blindSpot: {type: String},
         inDisplayed: {type: Boolean}
       }
+    ],
+    stuffed: {type: Boolean},
+    teamName: {type: String},
+    teamPreferences: [
+      {type: String}
+    ],
+    teamBlindspots: [
+      {type: String}
     ]
   }
 )

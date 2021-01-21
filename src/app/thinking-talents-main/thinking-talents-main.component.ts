@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 import {MapGenerationService} from '../services/map-generation.service';
 import {TeamService} from '../services/team.service';
 import {map} from 'rxjs/operators';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-thinking-talents-main',
@@ -27,6 +28,7 @@ export class ThinkingTalentsMainComponent implements OnInit {
   disableTeamNameInput = true;
   teamName = '';
   showMap = false;
+  teamInputForm: FormGroup;
 
   @ViewChild('teamNameCheckbox') teamNameCheckbox: ElementRef;
 

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "dev": "nodemon -L server.js",
+    "dev": "ng build && nodemon -L server.js",
     "start:frontend": "ng serve",
     "restart": "npm run build && npm run start",
     "build": "ng build",
