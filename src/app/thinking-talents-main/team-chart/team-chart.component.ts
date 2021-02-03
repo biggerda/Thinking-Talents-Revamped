@@ -34,10 +34,10 @@ export class TeamChartComponent {
   generateTeamAnalysis = new EventEmitter();
 
   @Output()
-  generateSampleTeam = new EventEmitter();
+  loadTeams = new EventEmitter();
 
   @Output()
-  saveTeamEmitter = new EventEmitter();
+  saveTeam = new EventEmitter();
 
   @Input()
   teammates: Player[];
@@ -80,12 +80,12 @@ export class TeamChartComponent {
     this.generateTeamAnalysis.emit();
   }
 
-  saveTeam() {
-    this.saveTeamEmitter.emit();
+  save() {
+    this.saveTeam.emit();
   }
 
-  sampleTeam() {
-    this.generateSampleTeam.emit();
+  load() {
+    this.loadTeams.emit();
   }
 
   reset() {

@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+const {ObjectId} = require("bson");
 const {Schema} = mongoose;
 const teamModel = new Schema(
   {
+    _id: {type:ObjectId},
     players: [
       {
         name: {type: String},
@@ -19,7 +21,7 @@ const teamModel = new Schema(
         pTalents: {type: Number},
         talentPref: {type: String},
         blindSpot: {type: String},
-        inDisplayed: {type: Boolean}
+        isDisplayed: {type: Boolean}
       }
     ],
     stuffed: {type: Boolean},

@@ -1,0 +1,9 @@
+<div id="wrapper">
+  <h3>Load Saved Team</h3>
+  <div *ngFor="let team of allTeams | async"
+       class="team-section"
+       id="team-{{team._id}}"
+       (click)="loadTeam(team)">
+    <h3>Team: {{team.teamName}} ({{team.players.length}})</h3>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 function routes(Team) {
   const teamRouter = express.Router();
@@ -13,22 +14,40 @@ function routes(Team) {
       });
     });
 
-  teamRouter.route('/team/save')
+  teamRouter.route('/team/save/new')
     .post((req, res) => {
-      const team = new Team(req.body);
+      let team = new Team(req.body);
+      team._id = mongoose.Types.ObjectId();
 
-      team.save()
-        .then(result => {
-          return res.status(201).json(result.id);
-        })
-        .catch(err => {
-          if (err) {
-            return res.send(err);
-          }
-        });
+
+      team.save((err, team) => {
+        if (err) {
+          console.log(`Error: ${err}`);
+          return res.send(err);
+        }
+        else {
+          console.log("Your new record was saved successfully...");
+          return res.status(201).json(team.id);
+        }
+      });
     });
 
-  teamRouter.route('/team')
+  teamRouter.route('/team/save/:teamid')
+    .post((req, res) => {
+      let team = new Team(req.body);
+      Team.findByIdAndUpdate(req.params.teamid, team, (err, team) => {
+        if (err) {
+          console.log(`Error: ${err}`);
+          return res.send(err);
+        }
+        else {
+          console.log("Your data was saved successfully...");
+          return res.status(201).json(team.id);
+        }
+      });
+    });
+
+  teamRouter.route('/teams')
     .get((req, res) => {
       Team.find((err, teams) => {
         if (err) {

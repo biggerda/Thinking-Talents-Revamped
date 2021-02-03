@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "restart": "npm run build && npm run start",
     "dev": "ng build && nodemon -L server.js",
     "start:frontend": "ng serve",
-    "restart": "npm run build && npm run start",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,6 +31,7 @@
     "foundation-sites": "^6.3.1",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.12",
+    "mongoose-unique-validator": "^2.0.3",
     "motion-ui": "^2.0.3",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { TeamAnalysisComponent } from './team-analysis/team-analysis.component';
 import {HttpClientModule} from '@angular/common/http';
+import { LoadTeamComponent } from './load-team/load-team.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {HttpClientModule} from '@angular/common/http';
     TeamChartComponent,
     ThinkingTalentsMainComponent,
     TeamMapComponent,
-    TeamAnalysisComponent
+    TeamAnalysisComponent,
+    LoadTeamComponent
   ],
   imports: [
     BrowserModule,
