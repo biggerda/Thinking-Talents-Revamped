@@ -1,8 +1,51 @@
 #wrapper{
-  margin: 8rem 4rem;
+  width: 55rem;
+  margin: 8rem auto;
 
-  .team-section {
-    border: 1px black solid;
-    cursor: pointer;
+  .main-content {
+    margin: auto;
+
+    table {
+      width: 40rem;
+      border-collapse: collapse;
+      margin: auto;
+
+      tr {
+        border-bottom: solid lightgrey 1px;
+      }
+
+      .team-header-row {
+        height: 4rem;
+
+        th {
+          text-align: left;
+          padding-left: 1rem;
+        }
+      }
+
+      .team-row {
+        height: 6.5rem;
+        text-align: left;
+
+        td {
+          padding-left: 1rem;
+        }
+
+        td:nth-child(2) {
+          text-align: center;
+        }
+
+        .team-chart__actions-buttons {
+          background-color: rgb(51, 137, 242, 0.7);
+          margin-right: .6rem;
+          cursor: pointer;
+
+          img {
+            width: 1.4rem;
+            transform: translateY(-1px);
+          }
+        }
+      }
+    }
   }
 }

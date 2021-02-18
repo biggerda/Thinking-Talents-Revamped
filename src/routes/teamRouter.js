@@ -57,6 +57,18 @@ function routes(Team) {
       })
     });
 
+  teamRouter.route('/team/delete/:teamid')
+    .get((req, res) => {
+      Team.findByIdAndDelete(req.params.teamid, (err, team) => {
+        if (err) {
+          return res.send(err);
+        }
+        console.log(`Team ${team.teamName} has been deleted...`);
+        return res.status(200);
+      });
+    })
+
+
   teamRouter.route('/team/:teamid')
     .get((req, res) => {
       Team.findById(req.params.teamid, (err, team) => {

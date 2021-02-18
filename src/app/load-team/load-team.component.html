@@ -1,9 +1,33 @@
 <div id="wrapper">
-  <h3>Load Saved Team</h3>
-  <div *ngFor="let team of allTeams | async"
-       class="team-section"
-       id="team-{{team._id}}"
-       (click)="loadTeam(team)">
-    <h3>Team: {{team.teamName}} ({{team.players.length}})</h3>
+  <h6>
+    <a routerLink="..">< Go Back</a>
+  </h6>
+
+  <div class="main-content">
+    <h3>Load Saved Team</h3>
+    <table>
+      <colgroup>
+        <col style="width:40%">
+        <col style="width:30%">
+        <col style="width:30%">
+      </colgroup>
+      <tr class="team-header-row">
+        <th>Team Name</th>
+        <th># Members</th>
+        <th>Actions</th>
+      </tr>
+      <tr class="team-row" *ngFor="let team of allTeams">
+        <td>{{team.teamName}}</td>
+        <td>{{team.players.length}}</td>
+        <td>
+          <button mat-mini-fab class="team-chart__actions-buttons" (click)="loadTeam(team)">
+            <img src="assets/images/edit.svg" alt="Edit Person">
+          </button>
+          <button mat-mini-fab class="team-chart__actions-buttons" (click)="deleteTeam(team)">
+            <img src="assets/images/remove.svg" alt="Remove Person from list">
+          </button>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>

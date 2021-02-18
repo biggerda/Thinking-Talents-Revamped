@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {ReceivedTeam, Team} from '../../entities/Team';
 import {Location} from '@angular/common';
-import * as uuid from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +28,11 @@ export class TeamService {
     this._loadedTeam = team;
   }
 
+  deleteTeam(teamId: string): Observable<any> {
+    const deleteTeamApi = this._pathname + 'api/team/delete/' + teamId;
+    return this._http.get<any>(deleteTeamApi);
+  }
+
   clearLoadedTeam(): void {
     this._loadedTeam = null;
   }
@@ -43,7 +47,6 @@ export class TeamService {
     const saveTeamApi = this._pathname + 'api/team/save/' + teamId;
     const postBody = JSON.stringify(team);
     const postHeaders = {'content-type': 'application/json'};
-
     return this._http.post<any>(saveTeamApi, postBody, {headers: postHeaders});
   }
 }
